@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Desa Makmur Jaya</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('https://placehold.co/1600x900/a0c49d/ffffff?text=Selamat+Datang');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header / Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-xl font-bold text-emerald-700">Desa Makmur Jaya</a>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="#profil" class="text-gray-600 hover:text-emerald-600 transition">Profil</a>
+                    <a href="#potensi" class="text-gray-600 hover:text-emerald-600 transition">Potensi</a>
+                    <a href="#pemerintahan" class="text-gray-600 hover:text-emerald-600 transition">Pemerintahan</a>
+                    <a href="#produk" class="text-gray-600 hover:text-emerald-600 transition">Produk</a>
+                    <a href="#layanan" class="text-gray-600 hover:text-emerald-600 transition">Layanan</a>
+                    <a href="#galeri" class="text-gray-600 hover:text-emerald-600 transition">Galeri</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i data-lucide="menu" class="h-6 w-6"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#profil" class="block py-2 text-gray-600 hover:text-emerald-600">Profil</a>
+            <a href="#potensi" class="block py-2 text-gray-600 hover:text-emerald-600">Potensi</a>
+            <a href="#pemerintahan" class="block py-2 text-gray-600 hover:text-emerald-600">Pemerintahan</a>
+            <a href="#produk" class="block py-2 text-gray-600 hover:text-emerald-600">Produk</a>
+            <a href="#layanan" class="block py-2 text-gray-600 hover:text-emerald-600">Layanan</a>
+            <a href="#galeri" class="block py-2 text-gray-600 hover:text-emerald-600">Galeri</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg h-[60vh] md:h-[80vh] flex items-center justify-center text-white text-center">
+            <div class="px-4">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Selamat Datang di Desa Makmur Jaya</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto drop-shadow-md">Menuju Desa Mandiri, Sejahtera, dan Berbudaya</p>
+                <a href="#profil" class="mt-8 inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full transition-transform transform hover:scale-105 shadow-lg">
+                    Jelajahi Desa
+                </a>
+            </div>
+        </section>
+
+        <!-- Profil Desa Section -->
+        <section id="profil" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Profil Desa</h2>
+                    <p class="text-gray-600 mt-2">Mengenal lebih dekat Desa Makmur Jaya</p>
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x400/c7e9c0/333333?text=Peta+Wilayah" alt="Peta Wilayah Desa" class="rounded-lg shadow-xl w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-2xl font-semibold mb-4">Informasi Umum</h3>
+                        <p class="text-gray-600 mb-6">Desa Makmur Jaya adalah desa yang asri dan kaya akan potensi, terletak di kaki gunung dengan pemandangan yang indah. Kami berkomitmen untuk membangun desa yang maju dan menyejahterakan seluruh warganya.</p>
+                        <div class="grid grid-cols-2 gap-4 text-gray-700">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="map" class="h-8 w-8 text-emerald-600"></i>
+                                <div>
+                                    <span class="font-bold">Luas Wilayah</span>
+                                    <p>1.200 Ha</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="users" class="h-8 w-8 text-emerald-600"></i>
+                                <div>
+                                    <span class="font-bold">Jumlah Penduduk</span>
+                                    <p>5.432 Jiwa</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="home" class="h-8 w-8 text-emerald-600"></i>
+                                <div>
+                                    <span class="font-bold">Dusun</span>
+                                    <p>5 Dusun</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="door-open" class="h-8 w-8 text-emerald-600"></i>
+                                <div>
+                                    <span class="font-bold">RT / RW</span>
+                                    <p>25 RT / 8 RW</p>
+                                </div>
+                            </div>
+                        </div>
+                         <a href="#" class="mt-8 inline-block text-emerald-600 font-semibold hover:underline">Lihat Detail Profil &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Potensi Desa Section -->
+        <section id="potensi" class="py-20 bg-emerald-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Potensi Desa</h2>
+                    <p class="text-gray-600 mt-2">Kekayaan alam dan budaya yang kami miliki.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card Potensi Budaya -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/f6d6ad/333333?text=Budaya" alt="Budaya Desa" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Budaya & Tradisi</h3>
+                            <p class="text-gray-600 mb-4">Kekayaan seni tari, upacara adat, dan kearifan lokal yang terus kami lestarikan.</p>
+                            <a href="#" class="font-semibold text-emerald-600 hover:underline">Selengkapnya</a>
+                        </div>
+                    </div>
+                    <!-- Card Potensi Alam -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/a0c49d/333333?text=Sumber+Daya+Alam" alt="Sumber Daya Alam" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Sumber Daya Alam</h3>
+                            <p class="text-gray-600 mb-4">Lahan pertanian subur, sumber mata air jernih, dan panorama alam yang memukau.</p>
+                            <a href="#" class="font-semibold text-emerald-600 hover:underline">Selengkapnya</a>
+                        </div>
+                    </div>
+                    <!-- Card Potensi Wisata -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                        <img src="https://placehold.co/400x300/87ceeb/333333?text=Pariwisata" alt="Pariwisata Desa" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Pariwisata</h3>
+                            <p class="text-gray-600 mb-4">Jelajahi air terjun tersembunyi, jalur pendakian, dan agrowisata petik buah.</p>
+                            <a href="#" class="font-semibold text-emerald-600 hover:underline">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pemerintahan & Layanan Section -->
+        <section id="pemerintahan" class="py-20">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Pemerintahan & Layanan</h2>
+                    <p class="text-gray-600 mt-2">Transparansi pemerintahan dan kemudahan layanan untuk warga.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <a href="#" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:bg-emerald-50 transition text-center">
+                        <i data-lucide="users-2" class="h-12 w-12 mx-auto text-emerald-600 mb-4"></i>
+                        <h3 class="font-semibold text-lg">Struktur & Fungsi</h3>
+                    </a>
+                    <a href="#" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:bg-emerald-50 transition text-center">
+                        <i data-lucide="gavel" class="h-12 w-12 mx-auto text-emerald-600 mb-4"></i>
+                        <h3 class="font-semibold text-lg">Produk Hukum</h3>
+                    </a>
+                     <a href="#" id="layanan" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:bg-emerald-50 transition text-center">
+                        <i data-lucide="clipboard-list" class="h-12 w-12 mx-auto text-emerald-600 mb-4"></i>
+                        <h3 class="font-semibold text-lg">Pendataan Warga</h3>
+                    </a>
+                     <a href="#" class="block p-6 bg-white rounded-lg shadow-md hover:shadow-xl hover:bg-emerald-50 transition text-center">
+                        <i data-lucide="archive" class="h-12 w-12 mx-auto text-emerald-600 mb-4"></i>
+                        <h3 class="font-semibold text-lg">Pendataan Aset</h3>
+                    </a>
+                </div>
+             </div>
+        </section>
+
+
+        <!-- Produk Unggulan Section -->
+        <section id="produk" class="py-20 bg-emerald-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Produk Unggulan Desa</h2>
+                    <p class="text-gray-600 mt-2">Hasil karya dan olahan asli dari warga Desa Makmur Jaya.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Product Card 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
+                        <div class="overflow-hidden">
+                           <img src="https://placehold.co/300x300/d2b48c/333333?text=Kopi+Lokal" alt="Kopi Lokal" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold">Kopi Robusta Jaya</h3>
+                            <p class="text-sm text-gray-500">Aroma kuat, cita rasa khas pegunungan.</p>
+                            <div class="mt-3 font-bold text-emerald-600">Rp 50.000 / 250g</div>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
+                         <div class="overflow-hidden">
+                           <img src="https://placehold.co/300x300/8b4513/ffffff?text=Kerajinan" alt="Kerajinan Bambu" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold">Kerajinan Bambu</h3>
+                            <p class="text-sm text-gray-500">Anyaman tangan, unik dan ramah lingkungan.</p>
+                            <div class="mt-3 font-bold text-emerald-600">Mulai dari Rp 25.000</div>
+                        </div>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
+                         <div class="overflow-hidden">
+                           <img src="https://placehold.co/300x300/ffdab9/333333?text=Madu+Hutan" alt="Madu Hutan" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold">Madu Hutan Asli</h3>
+                            <p class="text-sm text-gray-500">100% murni dari lebah hutan liar.</p>
+                            <div class="mt-3 font-bold text-emerald-600">Rp 120.000 / botol</div>
+                        </div>
+                    </div>
+                    <!-- Product Card 4 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden group">
+                         <div class="overflow-hidden">
+                           <img src="https://placehold.co/300x300/ff6347/ffffff?text=Sambal" alt="Sambal Khas" class="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-300">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold">Sambal Khas Makmur</h3>
+                            <p class="text-sm text-gray-500">Resep warisan, pedasnya mantap.</p>
+                            <div class="mt-3 font-bold text-emerald-600">Rp 35.000 / botol</div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="text-center mt-12">
+                    <a href="#" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full transition shadow-lg">
+                        Lihat Semua Produk
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Problem/Aspirasi & Galeri Section -->
+        <section id="galeri" class="py-20">
+            <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+                <!-- Sisi Kiri: Aspirasi -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-3xl font-bold mb-4">Punya Masukan atau Laporan?</h2>
+                    <p class="text-gray-600 mb-6">Suara Anda penting untuk kemajuan desa. Sampaikan aspirasi, ide, atau laporan Anda melalui kanal yang kami sediakan.</p>
+                    <a href="#" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg transition">
+                        Sampaikan Aspirasi Anda
+                    </a>
+                </div>
+                <!-- Sisi Kanan: Video YT -->
+                <div class="lg:col-span-3">
+                    <div class="aspect-w-16 aspect-h-9 rounded-lg shadow-xl overflow-hidden">
+                        <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Desa Makmur Jaya</h3>
+                    <p class="text-gray-400">Jl. Raya Sejahtera No. 1, Kecamatan Damai, Kabupaten Sentosa, 12345</p>
+                    <p class="text-gray-400 mt-2">Email: kontak@desamakmurjaya.id</p>
+                    <p class="text-gray-400">Telp: (021) 123-4567</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Tautan Cepat</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#profil" class="text-gray-400 hover:text-white">Profil Desa</a></li>
+                        <li><a href="#potensi" class="text-gray-400 hover:text-white">Potensi</a></li>
+                        <li><a href="#pemerintahan" class="text-gray-400 hover:text-white">Pemerintahan</a></li>
+                        <li><a href="#produk" class="text-gray-400 hover:text-white">Produk Unggulan</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Ikuti Kami</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="facebook" class="h-6 w-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="instagram" class="h-6 w-6"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-lucide="youtube" class="h-6 w-6"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-500">
+                <p>&copy; 2024 Desa Makmur Jaya. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>
