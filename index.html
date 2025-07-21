@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datang di Desa Kaliprau - Jasmine Village</title>
+    <title>Desa Kaliprau - Jasmine Village</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,6 +27,14 @@
         .hero-gradient {
             background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%);
         }
+        /* Kustomisasi untuk Swiper.js di Hero Section */
+        .hero-swiper .swiper-button-next,
+        .hero-swiper .swiper-button-prev {
+            color: #FFFFFF;
+        }
+        .hero-swiper .swiper-pagination-bullet-active {
+            background-color: #FFFFFF;
+        }
     </style>
 </head>
 <body class="bg-[#FDFDFD] text-[#3C3C3C]">
@@ -47,7 +55,7 @@
                     <a href="#potensi-produk" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Potensi & Produk</a>
                     <a href="#edukasi" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Edukasi</a>
                     <a href="#stunting" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Stunting</a>
-                    <a href="https://kalipraukkn.blogspot.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300 flex items-center">
+                    <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300 flex items-center">
                         Berita Kaliprau <i data-lucide="arrow-up-right" class="h-4 w-4 ml-1"></i>
                     </a>
                 </nav>
@@ -65,21 +73,41 @@
             <a href="#potensi-produk" class="block py-2 text-gray-700 hover:text-[#F28500]">Potensi & Produk</a>
             <a href="#edukasi" class="block py-2 text-gray-700 hover:text-[#F28500]">Edukasi</a>
             <a href="#stunting" class="block py-2 text-gray-700 hover:text-[#F28500]">Stunting</a>
-            <a href="https://kalipraukkn.blogspot.com/" target="_blank" rel="noopener noreferrer" class="block py-2 text-gray-700 hover:text-[#F28500]">Berita Kaliprau</a>
+            <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="block py-2 text-gray-700 hover:text-[#F28500]">Berita Kaliprau</a>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="profil" class="relative h-[85vh] bg-cover bg-center text-white flex items-end" style="background-image: url('https://assets-a1.kompasiana.com/items/album/2020/02/10/kaliprau-5e40ebf2d541df0d89512d12.jpg?t=o&v=770');">
+        <!-- Hero Section with Slider -->
+        <section id="profil" class="relative h-[85vh] text-white">
+            <!-- Swiper container for background images -->
+            <div class="swiper-container hero-swiper absolute inset-0 w-full h-full">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://assets-a1.kompasiana.com/items/album/2020/02/10/kaliprau-5e40ebf2d541df0d89512d12.jpg?t=o&v=770');"></div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/65B741/ffffff?text=Hutan+Mangrove');"></div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/F28500/ffffff?text=Perkebunan+Melati');"></div>
+                </div>
+                <!-- Navigation Buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+            
+            <!-- Overlay and text content -->
             <div class="absolute inset-0 hero-gradient"></div>
-            <div class="relative container mx-auto px-6 pb-16 text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-xl" style="color: #FDFDFD;">
-                    Selamat Datang di Kaliprau
-                </h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto drop-shadow-lg">
-                    Temukan keindahan alam, kekayaan budaya, dan kehangatan "Jasmine Village".
-                </p>
+            <div class="relative h-full flex items-end z-10">
+                <div class="container mx-auto px-6 pb-16 text-center">
+                    <h1 class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-xl" style="color: #FDFDFD;">
+                        Selamat Datang di Kaliprau
+                    </h1>
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto drop-shadow-lg">
+                        Temukan keindahan alam, kekayaan budaya, dan kehangatan "Jasmine Village".
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -302,9 +330,27 @@
         </div>
     </footer>
 
-    <script>
+   <script>
         // Inisialisasi Lucide Icons
         lucide.createIcons();
+
+        // Inisialisasi Swiper.js untuk slider hero
+        var heroSwiper = new Swiper('.hero-swiper', {
+            loop: true,
+            effect: 'fade',
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
 
         // Fungsionalitas untuk Menu Mobile
         const mobileMenuButton = document.getElementById('mobile-menu-button');
