@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keuangan Desa Kaliprau - Jasmine Village</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #3C3C3C;
+        }
+        .text-f28500 { color: #F28500; }
+        .text-65b741 { color: #65B741; }
+        .bg-65b741 { background-color: #65B741; }
+
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e9ecef;
+            flex-wrap: wrap;
+        }
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            color: #4B5563;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            margin-bottom: -2px;
+        }
+        .tab-button:hover {
+            color: #F28500;
+        }
+        .tab-button.active {
+            color: #65B741;
+            border-color: #65B741;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .financial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .financial-table th, .financial-table td {
+            border: 1px solid #dee2e6;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+        .financial-table th {
+            background-color: #65B741;
+            color: white;
+            font-weight: 600;
+        }
+        .financial-table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .financial-table .amount-cell {
+            text-align: right;
+            font-family: 'Roboto Mono', monospace;
+        }
+        .financial-table .total-row, .financial-table .main-row {
+            font-weight: 700;
+            background-color: rgba(101, 183, 65, 0.1);
+        }
+        .financial-table .sub-row { padding-left: 1.5rem; }
+        .financial-table .sub-row-2 { padding-left: 3rem; }
+        
+        /* Gaya untuk Notifikasi Pajak */
+        #tax-notification-bubble {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        #tax-notification-bubble.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        #tax-notification-bubble.expanded {
+            width: 384px; /* max-w-sm */
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        #tax-notification-bubble.expanded #notification-icon {
+            transform: rotate(-15deg);
+        }
+        #notification-text-container {
+            max-width: 0;
+            opacity: 0;
+            transition: max-width 0.4s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        #tax-notification-bubble.expanded #notification-text-container {
+             max-width: 300px;
+             opacity: 1;
+        }
+
+        /* Animasi Scroll */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animasi untuk tombol unduh */
+        .download-btn {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header / Navigasi -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="images/logo_kaliprau.png" onerror="this.onerror=null; this.src='https://placehold.co/100x40/65B741/ffffff?text=Logo';" alt="Logo Desa Kaliprau" class="h-10">
+                </a>
+                <nav class="hidden lg:flex items-center space-x-5">
+                    <a href="index.html#profil" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Profil Desa</a>
+                    <a href="index.html#pemerintahan" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Pemerintahan</a>
+                    <a href="index.html#potensi-produk" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Potensi & Produk</a>
+                    <a href="index.html#edukasi" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Edukasi</a>
+                    <a href="index.html#stunting" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Stunting</a>
+                    <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300 flex items-center">
+                        Berita Kaliprau <i data-lucide="arrow-up-right" class="h-4 w-4 ml-1"></i>
+                    </a>
+                </nav>
+                <button id="mobile-menu-button" class="lg:hidden text-[#3C3C3C]" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="h-7 w-7"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4 border-t border-gray-200 bg-white/95">
+            <a href="index.html#profil" class="block py-2 text-gray-700 hover:text-[#F28500]">Profil Desa</a>
+            <a href="index.html#pemerintahan" class="block py-2 text-gray-700 hover:text-[#F28500]">Pemerintahan</a>
+            <a href="index.html#potensi-produk" class="block py-2 text-gray-700 hover:text-[#F28500]">Potensi & Produk</a>
+            <a href="index.html#edukasi" class="block py-2 text-gray-700 hover:text-[#F28500]">Edukasi</a>
+            <a href="index.html#stunting" class="block py-2 text-gray-700 hover:text-[#F28500]">Stunting</a>
+            <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="block py-2 text-gray-700 hover:text-[#F28500]">Berita Kaliprau</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Header Halaman Full Width -->
+        <section class="relative pt-24 pb-40" style="background-image: url('images/melati_background_small.jpg'); background-size: cover; background-position: center;">
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="relative z-10 container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white reveal-on-scroll">Infografis Keuangan Desa</h1>
+                <p class="mt-3 text-lg text-white/90 max-w-2xl mx-auto reveal-on-scroll" style="transition-delay: 0.2s;">Transparansi Anggaran Pendapatan dan Belanja Desa Kaliprau Tahun 2024.</p>
+            </div>
+        </section>
+
+        <!-- Konten Utama -->
+        <section class="pb-16 md:pb-24 -mt-32">
+            <div class="container mx-auto px-6 space-y-8">
+                
+                <!-- Kartu Infografis Ringkasan -->
+                <div class="relative z-20 bg-white rounded-xl shadow-2xl p-6 max-w-5xl mx-auto reveal-on-scroll">
+                    <h2 class="text-xl font-bold text-center text-gray-700 mb-4">RINGKASAN APBDes 2024</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 text-center">
+                        <div class="p-4">
+                            <p class="text-sm text-gray-500 flex items-center justify-center gap-2"><i data-lucide="arrow-down-left" class="h-4 w-4 text-65b741"></i>Pendapatan</p>
+                            <p class="text-2xl font-bold text-65b741">Rp2.647.496.126</p>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-500 flex items-center justify-center gap-2"><i data-lucide="arrow-up-right" class="h-4 w-4 text-f28500"></i>Belanja</p>
+                            <p class="text-2xl font-bold text-f28500">Rp2.647.801.600</p>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-500 flex items-center justify-center gap-2"><i data-lucide="dollar-sign" class="h-4 w-4 text-65b741"></i>Pembiayaan</p>
+                            <p class="text-2xl font-bold text-65b741">Rp405.474</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kartu Konten Utama (dengan Tab) -->
+                <div class="bg-white rounded-xl shadow-xl p-6 md:p-10 reveal-on-scroll">
+                    <!-- Tombol Kembali -->
+                    <a href="index.html#pemerintahan" class="inline-flex items-center gap-2 text-gray-600 hover:text-f28500 transition-colors font-semibold mb-8">
+                        <i data-lucide="arrow-left" class="h-5 w-5"></i>
+                        <span>Kembali</span>
+                    </a>
+                    <div class="tabs-container">
+                        <button class="tab-button active" data-tab="apbdes-2024">APBDes 2024</button>
+                        <button class="tab-button" data-tab="realisasi-apbdes">Realisasi APBDes</button>
+                        <button class="tab-button" data-tab="penerimaan-pbb">Penerimaan PBB</button>
+                    </div>
+
+                    <!-- Konten Tab APBDes 2024 -->
+                    <div id="apbdes-2024" class="tab-content active space-y-12">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                            <div class="relative">
+                                <img src="images/apbdes_kaliprau.png" onerror="this.onerror=null; this.src='https://placehold.co/600x800/ffffff/c0392b?text=Poster+APBDes';" alt="Poster APBDes 2024" class="rounded-lg shadow-md w-full max-w-md mx-auto">
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-2xl font-bold text-65b741">Anggaran Pendapatan dan Belanja Desa (APBDes) 2024</h3>
+                                <p class="text-gray-600 text-justify">Sebagai wujud transparansi dan akuntabilitas Pemerintah Desa Kaliprau, kami dengan bangga menyajikan Anggaran Pendapatan dan Belanja Desa (APBDes) tahun 2024. Dokumen ini merefleksikan komitmen kami untuk mengelola setiap sumber daya secara efektif demi tercapainya pembangunan yang inklusif dan peningkatan kesejahteraan seluruh elemen masyarakat.</p>
+                                <p class="text-gray-600 text-justify">Penyusunan APBDes 2024 telah melalui proses perencanaan yang cermat, dengan mengutamakan prioritas dan kebutuhan krusial yang telah disepakati bersama dalam forum musyawarah desa.</p>
+                                <p class="text-gray-600 text-justify">Silakan simak informasi lengkap mengenai APBDes Desa Kaliprau tahun 2024 di bawah ini.</p>
+                                <!-- Tombol Unduh PDF untuk APBDes 2024 -->
+                                <a href="https://drive.google.com/file/d/1kMRiysINisW1IXWInduesgssui9YOzOZ/view?usp=drive_link" target="_blank" class="download-btn inline-flex items-center gap-2 bg-65b741 text-white font-semibold py-2 px-4 rounded-lg hover:bg-opacity-90 transition-all mt-4">
+                                    <i data-lucide="download" class="h-4 w-4"></i>
+                                    Unduh PDF Ini
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Tabel Rencana APBDes 2024</h3>
+                            <div class="overflow-x-auto">
+                                <table class="financial-table">
+                                    <thead>
+                                        <tr>
+                                            <th>URAIAN</th>
+                                            <th class="amount-cell">ANGGARAN SEMULA (RP)</th>
+                                            <th class="amount-cell">ANGGARAN MENJADI (RP)</th>
+                                            <th class="amount-cell">BERTAMBAH / (BERKURANG)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="main-row"><td colspan="4">PENDAPATAN</td></tr>
+                                        <tr><td>Pendapatan Asli Desa</td><td class="amount-cell">52.000.000</td><td class="amount-cell">52.000.000</td><td class="amount-cell">0</td></tr>
+                                        <tr><td class="sub-row">Hasil Aset Desa</td><td class="amount-cell">52.000.000</td><td class="amount-cell">52.000.000</td><td class="amount-cell">0</td></tr>
+                                        <tr><td>Pendapatan Transfer</td><td class="amount-cell">2.379.525.131</td><td class="amount-cell">2.595.496.126</td><td class="amount-cell">215.970.995</td></tr>
+                                        <tr class="total-row"><td>JUMLAH PENDAPATAN</td><td class="amount-cell">2.431.525.131</td><td class="amount-cell">2.647.496.126</td><td class="amount-cell">215.970.995</td></tr>
+                                        <tr class="main-row"><td colspan="4">BELANJA</td></tr>
+                                        <tr><td>BIDANG PENYELENGGARAAN PEMERINTAHAN DESA</td><td class="amount-cell">664.201.705</td><td class="amount-cell">683.206.700</td><td class="amount-cell">19.004.995</td></tr>
+                                        <tr><td>BIDANG PELAKSANAAN PEMBANGUNAN DESA</td><td class="amount-cell">1.596.578.900</td><td class="amount-cell">1.697.094.900</td><td class="amount-cell">100.516.000</td></tr>
+                                        <tr class="total-row"><td>JUMLAH BELANJA</td><td class="amount-cell">2.431.930.605</td><td class="amount-cell">2.647.901.600</td><td class="amount-cell">215.970.995</td></tr>
+                                        <tr class="total-row" style="background-color: #fef2f2; color: #991b1b;"><td>SURPLUS/ (DEFISIT)</td><td class="amount-cell">(405.474)</td><td class="amount-cell">(405.474)</td><td class="amount-cell">0</td></tr>
+                                        <tr class="main-row"><td colspan="4">PEMBIAYAAN</td></tr>
+                                        <tr class="total-row"><td>PEMBIAYAAN NETTO</td><td class="amount-cell">405.474</td><td class="amount-cell">405.474</td><td class="amount-cell">0</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Konten Tab Realisasi APBDes -->
+                    <div id="realisasi-apbdes" class="tab-content space-y-12">
+                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                            <div class="relative">
+                                <img src="images/realisasi_apbdes_kaliprau.png" onerror="this.onerror=null; this.src='https://placehold.co/600x800/ffffff/c0392b?text=Poster+Realisasi';" alt="Poster Realisasi APBDes 2024" class="rounded-lg shadow-md w-full max-w-md mx-auto">
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-2xl font-bold text-65b741">Realisasi Anggaran 2024</h3>
+                                <p class="text-gray-600 text-justify">Selama tahun 2024, Desa Kaliprau memperoleh pendapatan sebesar Rp2,65 miliar, yang berasal dari Dana Desa, Bagi Hasil Pajak dan Retribusi, Alokasi Dana Desa, serta bantuan dari provinsi dan kabupaten. Seluruh dana tersebut berhasil diterima 100%, selanjutnya terdapat tambahan pendapatan lainnya sebesar Rp5,8 juta.</p>
+                                <p class="text-gray-600 text-justify">Dana tersebut digunakan untuk membiayai berbagai program dan kegiatan desa, dengan total pengeluaran atau belanja sebesar Rp2,65 miliar. Berdasarkan realisasi tersebut, Desa Kaliprau mengalami defisit anggaran sebesar Rp1.975.514, namun kekurangan ini dapat ditutupi melalui penerimaan pembiayaan desa.</p>
+                                <p class="text-gray-600 text-justify">Pada Akhir periode, desa mencatat Sisa Lebih Pembiayaan Anggaran (SiLPA) sebesar Rp1.975.514 yang akan dibawa ke tahun anggaran berikutnya.</p>
+                                <!-- Tombol Unduh PDF untuk Realisasi APBDes 2024 -->
+                                <a href="https://drive.google.com/file/d/1UB96FQk7E80GmFE1_3TcdP7BQbiZmj-f/view?usp=drive_link" target="_blank" class="download-btn inline-flex items-center gap-2 bg-65b741 text-white font-semibold py-2 px-4 rounded-lg hover:bg-opacity-90 transition-all mt-4">
+                                    <i data-lucide="download" class="h-4 w-4"></i>
+                                    Unduh PDF Ini
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Tabel Realisasi APBDes 2024</h3>
+                            <div class="overflow-x-auto">
+                               <table class="financial-table">
+                                    <thead>
+                                        <tr><th>URAIAN</th><th class="amount-cell">ANGGARAN (RP)</th><th class="amount-cell">REALISASI (RP)</th><th class="amount-cell">PERSENTASE</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="main-row"><td colspan="4">PENDAPATAN DESA</td></tr>
+                                        <tr><td>Lain-Lain Pendapatan Asli Desa</td><td class="amount-cell">83.400.000</td><td class="amount-cell">83.400.000</td><td class="amount-cell">100,00%</td></tr>
+                                        <tr><td>Dana Desa</td><td class="amount-cell">1.197.286.000</td><td class="amount-cell">1.197.286.000</td><td class="amount-cell">100,00%</td></tr>
+                                        <tr><td>Bagi Hasil Pajak Dan Retribusi</td><td class="amount-cell">75.691.754</td><td class="amount-cell">69.126.376</td><td class="amount-cell">91,33%</td></tr>
+                                        <tr><td>Bantuan Keuangan Provinsi</td><td class="amount-cell">550.000.000</td><td class="amount-cell">550.000.000</td><td class="amount-cell">100,00%</td></tr>
+                                        <tr><td>Bantuan Keuangan Kabupaten</td><td class="amount-cell">27.650.000</td><td class="amount-cell">27.650.000</td><td class="amount-cell">100,00%</td></tr>
+                                        <tr class="total-row"><td>JUMLAH PENDAPATAN</td><td class="amount-cell">2.019.104.259</td><td class="amount-cell">2.007.936.299</td><td class="amount-cell">99,45%</td></tr>
+                                        <tr class="main-row"><td colspan="4">BELANJA DESA</td></tr>
+                                        <tr><td>Bidang Penyelenggaraan Pemerintahan Desa</td><td class="amount-cell">654.553.877</td><td class="amount-cell">636.579.685</td><td class="amount-cell">97,25%</td></tr>
+                                        <tr><td>Bidang Pelaksanaan Pembangunan Desa</td><td class="amount-cell">978.396.000</td><td class="amount-cell">977.059.500</td><td class="amount-cell">99,86%</td></tr>
+                                        <tr><td>Bidang Pembinaan Kemasyarakatan Desa</td><td class="amount-cell">85.130.000</td><td class="amount-cell">80.130.000</td><td class="amount-cell">94,13%</td></tr>
+                                        <tr><td>Bidang Pemberdayaan Masyarakat</td><td class="amount-cell">152.750.000</td><td class="amount-cell">152.750.000</td><td class="amount-cell">100,00%</td></tr>
+                                        <tr><td>Bidang Penanggulangan Bencana, Darurat dan Mendesak Desa</td><td class="amount-cell">93.600.000</td><td class="amount-cell">93.600.000</td><td class="amount-cell">100,00%</td></tr>
+                                        <tr class="total-row"><td>JUMLAH BELANJA</td><td class="amount-cell">2.039.919.877</td><td class="amount-cell">2.014.800.185</td><td class="amount-cell">98,77%</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Konten Tab Penerimaan PBB -->
+                    <div id="penerimaan-pbb" class="tab-content space-y-12">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                            <div class="relative">
+                                <img src="images/pbb_kaliprau.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x1000/ffffff/c0392b?text=Poster+PBB';" alt="Infografis PBB" class="max-w-full md:max-w-md h-auto rounded-lg shadow-md border mx-auto">
+                            </div>
+                             <div class="space-y-4">
+                                <h3 class="text-2xl font-bold text-65b741">Penerimaan Pajak Bumi dan Bangunan (PBB)</h3>
+                                <p class="text-gray-600 text-justify">Infografis ini bertujuan untuk mengedukasi masyarakat tentang pentingnya pajak dan mendorong kepatuhan pajak di masa mendatang untuk mendukung pembangunan desa.</p>
+                                <p class="text-gray-600 text-justify">Grafik menunjukkan perkembangan penerimaan PBB dari tahun 2019 hingga 2024. Terjadi penurunan pada tahun 2021 dan 2023, namun sedikit meningkat di tahun 2024, meskipun masih di bawah pencapaian tahun 2019.</p>
+                                <p class="text-gray-600 text-justify">Pada tahun 2024, realisasi penerimaan PBB baru mencapai <strong>37,9%</strong> dari target, yang mengindikasikan bahwa sebagian besar wajib pajak belum memenuhi kewajibannya.</p>
+                                <!-- Tombol Unduh PDF untuk Penerimaan PBB -->
+                                <a href="https://drive.google.com/file/d/1RDUws0PZqf_gP-s7WVAOkNYvVdPp5FTN/view?usp=drive_link" target="_blank" class="download-btn inline-flex items-center gap-2 bg-65b741 text-white font-semibold py-2 px-4 rounded-lg hover:bg-opacity-90 transition-all mt-4">
+                                    <i data-lucide="download" class="h-4 w-4"></i>
+                                    Unduh PDF Ini
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Rincian Realisasi PBB 2024</h3>
+                            <div class="overflow-x-auto">
+                                <table class="financial-table">
+                                    <thead>
+                                        <tr>
+                                            <th>KETERANGAN</th>
+                                            <th class="amount-cell">JUMLAH WAJIB PAJAK</th>
+                                            <th class="amount-cell">PERSENTASE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Telah Membayar</td>
+                                            <td class="amount-cell">2.127 Orang</td>
+                                            <td class="amount-cell">37,9%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Belum Membayar</td>
+                                            <td class="amount-cell">3.486 Orang</td>
+                                            <td class="amount-cell">62,1%</td>
+                                        </tr>
+                                        <tr class="total-row">
+                                            <td>TOTAL WAJIB PAJAK</td>
+                                            <td class="amount-cell">5.613 Orang</td>
+                                            <td class="amount-cell">100%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Notifikasi Pajak -->
+    <div id="tax-notification-bubble" class="fixed bottom-5 right-5 bg-white rounded-full shadow-2xl flex items-center p-4 z-[100] cursor-pointer w-16 h-16 justify-center">
+        <div id="notification-icon" class="flex-shrink-0 transition-transform duration-300">
+            <i data-lucide="megaphone" class="h-8 w-8 text-f28500"></i>
+        </div>
+        <div id="notification-text-container" class="flex-grow ml-3 whitespace-nowrap overflow-hidden">
+            <div>
+                <h4 class="font-bold text-gray-800">Pengingat Pajak</h4>
+                <p class="text-sm text-gray-600">Ayo bayar PBB di balai desa.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-[#3C3C3C] text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div><h3 class="text-xl font-bold mb-4 text-[#F28500]">Desa Kaliprau</h3><p class="text-gray-300">Jasmine Village<br>Kecamatan Ulujami, Kabupaten Pemalang<br>Jawa Tengah</p></div>
+                <div><h3 class="text-xl font-bold mb-4 text-[#F28500]">Tautan Penting</h3><ul class="space-y-2"><li><a href="index.html#profil" class="text-gray-300 hover:text-white">Profil Desa</a></li><li><a href="index.html#pemerintahan" class="text-gray-300 hover:text-white">Pemerintahan</a></li><li><a href="index.html#potensi-produk" class="text-gray-300 hover:text-white">Potensi & Produk</a></li></ul></div>
+                <div><h3 class="text-xl font-bold mb-4 text-[#F28500]">Ikuti Kami</h3><div class="flex justify-center md:justify-start space-x-4"><a href="#" class="text-gray-300 hover:text-white"><i data-lucide="instagram" class="h-6 w-6"></i></a><a href="https://www.facebook.com/desakaliprau/?locale=id_ID" target="_blank" class="text-gray-300 hover:text-white"><i data-lucide="facebook" class="h-6 w-6"></i></a><a href="#" class="text-gray-300 hover:text-white"><i data-lucide="youtube" class="h-6 w-6"></i></a></div></div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-400"><p>&copy; 2024 Desa Kaliprau. Didukung oleh Tim KKN Undip.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    button.classList.add('active');
+                    document.getElementById(button.dataset.tab).classList.add('active');
+                });
+            });
+            
+            // Fungsionalitas Notifikasi Pajak
+            const taxNotification = document.getElementById('tax-notification-bubble');
+            setTimeout(() => {
+                taxNotification.classList.add('visible');
+            }, 2000);
+            taxNotification.addEventListener('click', (e) => {
+                taxNotification.classList.toggle('expanded');
+            });
+
+            // Fungsionalitas Animasi Scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+    
+</body>
+</html>
