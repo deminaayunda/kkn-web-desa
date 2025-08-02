@@ -828,7 +828,7 @@
     
     <!-- Main Application Script -->
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    window.onload = function() {
         // Initialize Lucide Icons
         lucide.createIcons();
 
@@ -915,9 +915,9 @@
             button.addEventListener('click', () => closeModal(modalId));
         });
 
-    }); // END DOMContentLoaded
+    
 
-    // === GLOBAL MODAL FUNCTIONS ===
+   }; // END DOMContentLoaded // === GLOBAL MODAL FUNCTIONS ===
     function openModal(id) {
         const modal = document.getElementById(id);
         if (modal) {
