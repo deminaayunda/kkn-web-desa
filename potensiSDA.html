@@ -59,40 +59,49 @@
 <body class="bg-[#FDFDFD] text-[#3C3C3C]">
 
     <!-- Header / Navigasi -->
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto px-6 py-3">
+    <header class="fixed top-0 left-0 right-0 z-50 p-4">
+        <div class="container mx-auto px-6 py-3 bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg">
             <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <a href="#" class="flex items-center space-x-2">
+            
+                <a href="index.html" class="flex items-center space-x-2">
                     <img src="images/logo_kaliprau.png" onerror="this.onerror=null; this.src='https://placehold.co/100x40/65B741/ffffff?text=Logo';" alt="Logo Desa Kaliprau" class="h-10">
                 </a>
                 
-                <!-- Menu Navigasi untuk Desktop -->
                 <nav class="hidden lg:flex items-center space-x-5">
-                    <a href="#profil" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Profil Desa</a>
-                    <a href="#pemerintahan" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Pemerintahan</a>
-                    <a href="#potensi" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Potensi & Produk</a>
-                    <a href="#edukasi" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Edukasi</a>
-                    <a href="#stunting" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Stunting</a>
+                    <a href="index.html#profil" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Profil Desa</a>
+                    <a href="index.html#pemerintahan" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Pemerintahan</a>
+                    <a href="index.html#potensi-desa" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Potensi</a>
+                    <a href="index.html#produk-desa" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Produk</a>
+                    <a href="index.html#edukasi" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Edukasi</a>
+                    <a href="index.html#stunting" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Stunting</a>
                     <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300 flex items-center">
                         Berita Kaliprau <i data-lucide="arrow-up-right" class="h-4 w-4 ml-1"></i>
                     </a>
                 </nav>
-
                 <!-- Tombol Menu Mobile -->
                 <button id="mobile-menu-button" class="lg:hidden text-[#3C3C3C]" aria-label="Toggle mobile menu">
                     <i data-lucide="menu" class="h-7 w-7"></i>
                 </button>
             </div>
-        </div>
-        <!-- Menu Mobile (Tersembunyi secara default) -->
-        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4 border-t border-gray-200">
-            <a href="#profil" class="block py-2 text-gray-700 hover:text-[#F28500]">Profil Desa</a>
-            <a href="#pemerintahan" class="block py-2 text-gray-700 hover:text-[#F28500]">Pemerintahan</a>
-            <a href="#potensi" class="block py-2 text-gray-700 hover:text-[#F28500]">Potensi Desa</a>
-            <a href="#edukasi" class="block py-2 text-gray-700 hover:text-[#F28500]">Edukasi</a>
-            <a href="#stunting" class="block py-2 text-gray-700 hover:text-[#F28500]">Stunting</a>
-            <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="block py-2 text-gray-700 hover:text-[#F28500]">Berita Kaliprau</a>
+            <!-- Menu Mobile Dropdown -->
+            <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-gray-200/50">
+                <nav class="flex flex-col space-y-2">
+                    <a href="index.html#profil" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Profil Desa</a>
+                    <a href="index.html#pemerintahan" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Pemerintahan</a>
+                    <a href="index.html#potensi-desa" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Potensi</a>
+                    <a href="index.html#produk-desa" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Produk</a>
+                    <a href="index.html#edukasi" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Edukasi</a>
+                    <a href="index.html#stunting" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Stunting</a>
+                    <a href="https://bumikaliprau.blogspot.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mobile-link flex items-center gap-x-1 text-gray-700 hover:text-[#F28500] p-2 rounded-md">
+                    Berita Kaliprau
+                    <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                    </a>
+
+                </nav>
+            </div>
         </div>
     </header>
 

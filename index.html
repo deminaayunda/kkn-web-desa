@@ -901,46 +901,50 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script>
-        // Global Modal Functions
-    function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-    }
+     <!-- Merged and Cleaned Script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Inisialisasi Lucide Icons
+    lucide.createIcons();
 
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Restore background scrolling
-        }
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-        // Inisialisasi Lucide Icons
-        lucide.createIcons();
+    // === MOBILE MENU FUNCTIONALITY ===
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // Swiper Hero Section
-        new Swiper('.hero-swiper', {
-            loop: true,
-            effect: 'fade',
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+    if (mobileMenuButton && mobileMenu) {
+        const toggleMenu = () => {
+            mobileMenu.classList.toggle('hidden');
+        };
+
+        mobileMenuButton.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking mobile links
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300); 
+                }
+            });
         });
+    }
 
-        // Swiper Home Section
+    // === HASH SCROLL FUNCTIONALITY ===
+    if (window.location.hash && window.location.hash !== '#profil') {
+        const targetElement = document.querySelector(window.location.hash);
+        if (targetElement) {
+            setTimeout(() => {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    }
+
+    // === SWIPER INITIALIZATION ===
+    // Hero Section Swiper
+    const homeSwiper = document.querySelector('.home-swiper');
+    if (homeSwiper) {
         new Swiper('.home-swiper', {
             loop: true,
             effect: 'slide',
@@ -958,8 +962,11 @@
                 prevEl: '.swiper-button-prev',
             },
         });
+    }
 
-        // Swiper Potensi Desa
+    // Potensi Desa Swiper
+    const potensiSwiper = document.querySelector('.potensi-swiper');
+    if (potensiSwiper) {
         new Swiper('.potensi-swiper', {
             loop: true,
             effect: 'fade',
@@ -971,203 +978,108 @@
                 disableOnInteraction: false,
             },
         });
+    }
 
-        // Scroll to hash on load
-        if (window.location.hash) {
-            const targetElement = document.querySelector(window.location.hash);
-            if (targetElement) {
-                setTimeout(() => {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-            }
-        }
-
-        // Mobile Menu Toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (!mobileMenu.classList.contains('hidden')) {
-                    setTimeout(() => {
-                        mobileMenu.classList.add('hidden');
-                    }, 300);
+    // === TAB FUNCTIONALITY ===
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    if (tabButtons.length > 0) {
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const targetTab = document.getElementById(button.dataset.tab);
+                if (targetTab) {
+                    targetTab.classList.add('active');
                 }
             });
         });
+    }
+    
+    // === TAX NOTIFICATION FUNCTIONALITY ===
+    const taxNotification = document.getElementById('tax-notification-bubble');
+    if (taxNotification) {
+        setTimeout(() => {
+            taxNotification.classList.add('visible');
+        }, 2000);
+        
+        taxNotification.addEventListener('click', (e) => {
+            e.stopPropagation();
+            taxNotification.classList.toggle('expanded');
+        });
+    }
 
-        // --- Modal Setup ---
-        function setupModal(triggerId, modalId, closeId) {
-            const trigger = document.getElementById(triggerId);
-            const modal = document.getElementById(modalId);
-            const closeBtn = document.getElementById(closeId);
-
-            if (trigger && modal && closeBtn) {
-                // Open modal on trigger click
-                trigger.addEventListener('click', () => {
-                    openModal(modalId);
-                    lucide.createIcons(); // Re-render icons if any in modal
-                });
-
-                // Close modal on close button click
-                closeBtn.addEventListener('click', () => {
-                    closeModal(modalId);
-                });
-
-                // Close modal on background click
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        closeModal(modalId);
-                    }
-                });
-            }
-        }
-
-        // Setup all modals
-        setupModal('lihat-selengkapnya-profil', 'profil-lengkap-modal', 'close-profil-lengkap-modal');
-        setupModal('jumlah-penduduk-card', 'jumlah-penduduk-modal', 'close-jumlah-penduduk-modal');
-        setupModal('luas-wilayah-card', 'luas-wilayah-modal', 'close-luas-wilayah-modal');
-        setupModal('rt-rw-card', 'rt-rw-modal', 'close-rt-rw-modal');
-        // Note: The product modals are handled by the global openModal/closeModal functions
-        // called via onclick attributes in the HTML.
-        // We still need to add listeners for closing when clicking the background.
-        const productModals = ['modalCelana', 'modalJasmine', 'modalAbon', 'modalRengginang', 'modalSabun', 'modalLilin'];
-        productModals.forEach(modalId => {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        closeModal(modalId);
-                    }
-                });
+    // === SCROLL ANIMATION FUNCTIONALITY ===
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
             }
         });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
-//     <script>
-//     document.addEventListener('DOMContentLoaded', () => {
-//         // Inisialisasi Lucide Icons
-//         lucide.createIcons();
 
-//         // Swiper Hero Section
-//         new Swiper('.hero-swiper', {
-//             loop: true,
-//             effect: 'fade',
-//             autoplay: {
-//                 delay: 5000,
-//                 disableOnInteraction: false,
-//             },
-//             pagination: {
-//                 el: '.swiper-pagination',
-//                 clickable: true,
-//             },
-//             navigation: {
-//                 nextEl: '.swiper-button-next',
-//                 prevEl: '.swiper-button-prev',
-//             },
-//         });
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    revealElements.forEach(el => {
+        observer.observe(el);
+    });
+});
 
-//         // Swiper Home Section
-//         new Swiper('.home-swiper', {
-//             loop: true,
-//             effect: 'slide',
-//             grabCursor: true,
-//             autoplay: {
-//                 delay: 4000,
-//                 disableOnInteraction: false,
-//             },
-//             pagination: {
-//                 el: '.swiper-pagination',
-//                 clickable: true,
-//             },
-//             navigation: {
-//                 nextEl: '.swiper-button-next',
-//                 prevEl: '.swiper-button-prev',
-//             },
-//         });
+// === MODAL FUNCTIONALITY (Global Functions) ===
+function openModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+        
+        // Add click outside to close functionality
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal(id);
+            }
+        });
+    }
+}
 
-//         // Swiper Potensi Desa
-//         new Swiper('.potensi-swiper', {
-//             loop: true,
-//             effect: 'fade',
-//             fadeEffect: {
-//                 crossFade: true
-//             },
-//             autoplay: {
-//                 delay: 2500,
-//                 disableOnInteraction: false,
-//             },
-//         });
+function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.classList.add("hidden");
+        document.body.style.overflow = "auto";
+    }
+}
 
-//         // Scroll to hash on load
-//         if (window.location.hash) {
-//             const targetElement = document.querySelector(window.location.hash);
-//             if (targetElement) {
-//                 setTimeout(() => {
-//                     targetElement.scrollIntoView({ behavior: 'smooth' });
-//                 }, 100);
-//             }
-//         }
+// === UTILITY FUNCTIONS ===
+// Close modal with ESC key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const visibleModals = document.querySelectorAll('.modal:not(.hidden)');
+        visibleModals.forEach(modal => {
+            closeModal(modal.id);
+        });
+    }
+});
 
-//         // Mobile Menu Toggle
-//         const mobileMenuButton = document.getElementById('mobile-menu-button');
-//         const mobileMenu = document.getElementById('mobile-menu');
-//         const mobileLinks = document.querySelectorAll('.mobile-link');
-
-//         mobileMenuButton.addEventListener('click', () => {
-//             mobileMenu.classList.toggle('hidden');
-//         });
-
-//         mobileLinks.forEach(link => {
-//             link.addEventListener('click', () => {
-//                 if (!mobileMenu.classList.contains('hidden')) {
-//                     setTimeout(() => {
-//                         mobileMenu.classList.add('hidden');
-//                     }, 300);
-//                 }
-//             });
-//         });
-
-//         // Modal Functions
-//         function setupModal(triggerId, modalId, closeId) {
-//             const trigger = document.getElementById(triggerId);
-//             const modal = document.getElementById(modalId);
-//             const closeBtn = document.getElementById(closeId);
-
-//             if (trigger && modal && closeBtn) {
-//                 trigger.addEventListener('click', () => {
-//                     modal.classList.remove('hidden');
-//                     document.body.style.overflow = 'hidden';
-//                     lucide.createIcons();
-//                 });
-
-//                 closeBtn.addEventListener('click', () => {
-//                     modal.classList.add('hidden');
-//                     document.body.style.overflow = 'auto';
-//                 });
-
-//                 modal.addEventListener('click', (e) => {
-//                     if (e.target === modal) {
-//                         modal.classList.add('hidden');
-//                         document.body.style.overflow = 'auto';
-//                     }
-//                 });
-//             }
-//         }
-
-//         // Setup all modals
-//         setupModal('lihat-selengkapnya-profil', 'profil-lengkap-modal', 'close-profil-lengkap-modal');
-//         setupModal('jumlah-penduduk-card', 'jumlah-penduduk-modal', 'close-jumlah-penduduk-modal');
-//         setupModal('luas-wilayah-card', 'luas-wilayah-modal', 'close-luas-wilayah-modal');
-//         setupModal('rt-rw-card', 'rt-rw-modal', 'close-rt-rw-modal');
-//     });
-// </script>
-
+// Smooth scroll for anchor links
+document.addEventListener('click', (e) => {
+    if (e.target.matches('a[href^="#"]')) {
+        e.preventDefault();
+        const target = document.querySelector(e.target.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+});
 </script>
-
 </body>
 </html>
