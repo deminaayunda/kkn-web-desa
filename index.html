@@ -296,16 +296,6 @@
                         <p class="text-gray-600 mt-2">APBD Desa, Realisasi APBDes, Penerimaan PBB</p>
                         <p class="text-sm text-gray-400 mt-4">Oleh: Natasya, Marista, Rara</p>
 
-                    </div>
-                    <!-- Card Realisasi APBDes -->
-                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                        <i data-lucide="bar-chart-3" class="h-12 w-12 mx-auto text-[#65B741]"></i>
-                        <h3 class="text-xl font-bold mt-4">Aset Desa</h3>
-                        <p class="text-gray-600 mt-2">Lorem ipsum</p>
-                        <p class="text-sm text-gray-400 mt-4">Oleh: Mei Aviyani</p>
-                    </div>
-
-                    </a>
                     <!-- Card Data Aset Desa -->
                     <a href="data_aset.html" class="block bg-white p-6 rounded-lg shadow-md text-center cursor-pointer hover:shadow-xl transition-shadow duration-300">
                         <i data-lucide="archive" class="h-12 w-12 mx-auto text-[#65B741]"></i>
@@ -381,6 +371,7 @@
             </div>
         </section>
 
+        <!-- Produk Desa Section - FIXED -->
         <!-- Produk Desa Section - FIXED -->
         <section id="produk-desa" class="py-20 bg-teal-50">
             <div class="container mx-auto px-6">
@@ -565,7 +556,21 @@
                     <h3 class="text-xl font-bold mb-2">Detail Produk</h3>
                     <img src="images/Jasmine Flower.jpeg" alt="Sabun Melaure" class="w-full h-64 object-cover rounded-lg mb-4">
                     <p class="text-gray-700 mb-4">
-                        Bunga Melati “Jasmine Flower” dari Desa Kaliprau adalah pilihan sempurna bagi Anda yang mencari kesegaran alami dengan harga terjangkau. Dipetik langsung dari kebun terbaik dan dikemas dengan es untuk menjaga kualitasnya, bunga melati ini memiliki aroma yang harum, lembut, dan menyegarkan. Cocok digunakan sebagai bahan campuran sabun, parfum, aromaterapi, hingga keperluan adat dan spiritual, melati ini menawarkan keharuman alami yang tahan lama dan menenangkan. Dengan kualitas unggul dan pengemasan higienis, produk ini siap dikirim ke seluruh Indonesia, baik untuk keperluan rumah tangga maupun produksi industri. Rasakan sensasi harum melati yang menenangkan dan alami dalam setiap kelopak, hanya dari Melati Segar.
+                        Detail produk untuk Sabun Melaure akan segera hadir.
+                    </p>
+                    <a href="https://wa.me/+6281944236705" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition text-sm">
+                        📞 Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+             <div id="modalLilin" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-lg p-6 max-w-lg w-full relative shadow-xl max-h-[90vh] overflow-y-auto">
+                    <button onclick="closeModal('modalLilin')" class="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-xl">&times;</button>
+                    <h3 class="text-xl font-bold mb-2">Detail Produk</h3>
+                    <img src="https://placehold.co/600x400/65B741/ffffff?text=Lilin+Melaure" alt="Lilin Melaure" class="w-full h-64 object-cover rounded-lg mb-4">
+                    <p class="text-gray-700 mb-4">
+                        Detail produk untuk Lilin Melaure akan segera hadir.
                     </p>
                     <a href="https://wa.me/+6281944236705" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition text-sm">
                         📞 Pesan via WhatsApp
@@ -574,6 +579,7 @@
             </div>
         
         </section>
+
 
     <!-- Edukasi Section - UPDATED -->
         <section id="edukasi" class="py-20 bg-gray-50 relative overflow-hidden">
@@ -590,14 +596,155 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-[#F28500]">Pojok Edukasi</h2>
                     <p class="text-lg text-[#3C3C3C] mt-2 max-w-2xl mx-auto">Materi edukatif untuk kemajuan masyarakat Desa Kaliprau.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"><div class="p-6 flex-grow"><span class="text-xs font-semibold bg-green-100 text-green-800 px-2 py-1 rounded-full">UMKM</span><h3 class="text-xl font-bold mt-4">Digital Marketing</h3><p class="text-gray-600 mt-2">Modul panduan pemasaran digital untuk UMKM desa.</p></div><div class="p-6 bg-gray-50 border-t"><p class="text-sm text-gray-500 mb-4">Oleh: Arul dan Abdul</p><a href="#" target="_blank" class="w-full text-center block bg-[#65B741] text-white font-semibold py-2 px-4 rounded-lg hover:bg-opacity-90 transition-all">Lihat Karya</a></div></div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"><div class="p-6 flex-grow"><span class="text-xs font-semibold bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Kesehatan</span><h3 class="text-xl font-bold mt-4">Edukasi Kesehatan Mental</h3><p class="text-gray-600 mt-2">Poster infografis untuk meningkatkan kesadaran akan kesehatan mental.</p></div><div class="p-6 bg-gray-50 border-t"><p class="text-sm text-gray-500 mb-4">Oleh: Fannia</p><a href="#" target="_blank" class="w-full text-center block bg-[#65B741] text-white font-semibold py-2 px-4 rounded-lg hover:bg-opacity-90 transition-all">Lihat Karya</a></div></div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"><div class="p-6 flex-grow"><span class="text-xs font-semibold bg-pink-100 text-pink-800 px-2 py-1 rounded-full">Sosial</span><h3 class="text-xl font-bold mt-4">Stop! Pergaulan Bebas</h3><p class="text-gray-600 mt-2">Penyuluhan dan informasi tentang bahaya pergaulan bebas.</p></div><div class="p-6 bg-gray-50 border-t"><p class="text-sm text-gray-500 mb-4">Oleh: Azalia dan Jendra</p><a href="https://www.canva.com/design/DAGtJlkLXxo/xHr3mumjzkafDScIrkl3-A/edit?utm_content=DAGtJlkLXxo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" class="w-full text-center block bg-[#65B741] text-white font-semibold py-2 px-4 rounded-lg hover:bg-opacity-90 transition-all">Lihat Karya</a></div></div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"><div class="p-6 flex-grow"><span class="text-xs font-semibold bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">Lingkungan</span><h3 class="text-xl font-bold mt-4">Dampak Pembakaran Sampah</h3><p class="text-gray-600 mt-2">Informasi mengenai dampak negatif pembakaran sampah terhadap lingkungan dan kesehatan.</p></div><div class="p-6 bg-gray-50 border-t"><p class="text-sm text-gray-500 mb-4">Oleh: Sherly</p><a href="#" target="_blank" class="w-full text-center block bg-[#65B741] text-white font-semibold py-2 px-4 rounded-lg hover:bg-opacity-90 transition-all">Lihat Karya</a></div></div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- Card 1: Digital Marketing -->
+                    <div class="bg-gradient-to-br from-orange-50 to-amber-100/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="flex flex-col text-center h-full">
+                            <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                                <i data-lucide="trending-up" class="h-8 w-8 text-orange-500"></i>
+                            </div>
+                            <div class="mt-4 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-800">Digital Marketing</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Panduan UMKM untuk memasarkan produk secara online.</p>
+                            </div>
+                            <div class="mt-6">
+                                <a href="https://drive.google.com/file/d/1NObWw8zgcaVXUZiIg-dZbzQNvHo09jCI/view?usp=sharing" target="_blank" class="w-full block bg-white text-gray-800 font-semibold py-2.5 px-4 rounded-lg shadow-md hover:bg-gray-50 transition-all">
+                                    Lihat Modul
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Modul Tiktokshop -->
+                     <div class="bg-gradient-to-br from-red-50 to-black-200/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="flex flex-col text-center h-full">
+                            <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                                <i data-lucide="video" class="h-8 w-8 text-black-700"></i>
+                            </div>
+                            <div class="mt-4 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-800">Modul TikTok Shop</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Langkah demi langkah untuk memulai berjualan di TikTok.</p>
+                            </div>
+                            <div class="mt-6">
+                                <a href="https://drive.google.com/file/d/1-PtOZdzyIaf68zvlTMLrRSOcYQtfCfnm/view?usp=drivesdk" target="_blank" class="w-full block bg-white text-gray-800 font-semibold py-2.5 px-4 rounded-lg shadow-md hover:bg-gray-50 transition-all">
+                                    Lihat Modul
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Kesehatan Mental -->
+                    <div class="bg-gradient-to-br from-purple-50 to-indigo-100/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="flex flex-col text-center h-full">
+                            <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                                <i data-lucide="brain-circuit" class="h-8 w-8 text-purple-500"></i>
+                            </div>
+                            <div class="mt-4 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-800">Kesehatan Mental</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Tingkatkan kesadaran akan pentingnya kesehatan mental.</p>
+                            </div>
+                            <div class="mt-6">
+                                <a href="posterMental.html" target="_blank" class="w-full block bg-white text-gray-800 font-semibold py-2.5 px-4 rounded-lg shadow-md hover:bg-gray-50 transition-all">
+                                    Lihat Poster
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Pergaulan Bebas -->
+                    <div class="bg-gradient-to-br from-rose-50 to-red-100/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="flex flex-col text-center h-full">
+                            <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                                <i data-lucide="shield-off" class="h-8 w-8 text-red-500"></i>
+                            </div>
+                            <div class="mt-4 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-800">Stop Kenakalan Remaja</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Edukasi tentang bahaya kenakalan remaja.</p>
+                            </div>
+                            <div class="mt-6">
+                                <a href="posterhukum.html" target="_blank" class="w-full block bg-white text-gray-800 font-semibold py-2.5 px-4 rounded-lg shadow-md hover:bg-gray-50 transition-all">
+                                    Lihat Poster
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5: Otomatisasi HPP -->
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-100/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="flex flex-col text-center h-full">
+                            <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                                <i data-lucide="file-spreadsheet" class="h-8 w-8 text-green-500"></i>
+                            </div>
+                            <div class="mt-4 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-800">Otomatisasi HPP</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Perhitungan HPP berbasis Excel.</p>
+                            </div>
+                            <div class="mt-6">
+                                <a href="https://docs.google.com/spreadsheets/d/13t-xfyGKYRTkQxWe5xo3vGibUNuS2IoQ/edit?usp=sharing&ouid=100839945506337559298&rtpof=true&sd=true" target="_blank" class="w-full block bg-white text-gray-800 font-semibold py-2.5 px-4 rounded-lg shadow-md hover:bg-gray-50 transition-all">
+                                    Lihat Template
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Akuntansi Sederhana -->
+                    <div class="bg-gradient-to-br from-emerald-100/60 to-green-50 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="flex flex-col text-center h-full">
+                            <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                                <i data-lucide="calculator" class="h-8 w-8 text-green-500"></i>
+                            </div>
+                            <div class="mt-4 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-800">Akuntansi Sederhana</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Akuntansi Sederhana Berbasis Excel.</p>
+                            </div>
+                            <div class="mt-6">
+                                <a href="https://docs.google.com/spreadsheets/d/1qqf8S_yNoIqHIho7_5b22Tv4B_zR8AbI/edit?usp=sharing&ouid=100839945506337559298&rtpof=true&sd=true" target="_blank" class="w-full block bg-white text-gray-800 font-semibold py-2.5 px-4 rounded-lg shadow-md hover:bg-gray-50 transition-all">
+                                    Lihat Template
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7: Budidaya Ayam -->
+                    <div class="bg-gradient-to-br from-orange-50 to-red-100/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="flex flex-col text-center h-full">
+                            <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                                <i data-lucide="feather" class="h-8 w-8 text-brown-300"></i>
+                            </div>
+                            <div class="mt-4 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-800">Budidaya Ayam</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Tata cara Budidaya Ayam dari rumahan.</p>
+                            </div>
+                            <div class="mt-6">
+                                <a href="https://drive.google.com/file/d/1BEue2qjtbFefePqHgHY7s15Eufclgc7T/view?usp=drivesdk" target="_blank" class="w-full block bg-white text-gray-800 font-semibold py-2.5 px-4 rounded-lg shadow-md hover:bg-gray-50 transition-all">
+                                    Lihat Modul
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8: Modul Produk Lilin -->
+                    <div class="bg-gradient-to-br from-rose-50 to-blue-100/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="flex flex-col text-center h-full">
+                            <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                                <i data-lucide="flame" class="h-8 w-8 text-indigo-500"></i>
+                            </div>
+                            <div class="mt-4 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-800">Modul Produk Lilin</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Panduan pembuatan produk lilin aromaterapi.</p>
+                            </div>
+                            <div class="mt-6">
+                                <a href="#" target="_blank" class="w-full block bg-white text-gray-800 font-semibold py-2.5 px-4 rounded-lg shadow-md hover:bg-gray-50 transition-all">
+                                    Lihat Detail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
 
         <!-- BAGIAN STUNTING -->
          <!-- Cegah Stunting Section -->
@@ -755,6 +902,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
+        // Global Modal Functions
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restore background scrolling
+        }
+    }
     document.addEventListener('DOMContentLoaded', () => {
         // Inisialisasi Lucide Icons
         lucide.createIcons();
@@ -838,28 +1001,28 @@
             });
         });
 
-        // Modal Functions
+        // --- Modal Setup ---
         function setupModal(triggerId, modalId, closeId) {
             const trigger = document.getElementById(triggerId);
             const modal = document.getElementById(modalId);
             const closeBtn = document.getElementById(closeId);
 
             if (trigger && modal && closeBtn) {
+                // Open modal on trigger click
                 trigger.addEventListener('click', () => {
-                    modal.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
-                    lucide.createIcons();
+                    openModal(modalId);
+                    lucide.createIcons(); // Re-render icons if any in modal
                 });
 
+                // Close modal on close button click
                 closeBtn.addEventListener('click', () => {
-                    modal.classList.add('hidden');
-                    document.body.style.overflow = 'auto';
+                    closeModal(modalId);
                 });
 
+                // Close modal on background click
                 modal.addEventListener('click', (e) => {
                     if (e.target === modal) {
-                        modal.classList.add('hidden');
-                        document.body.style.overflow = 'auto';
+                        closeModal(modalId);
                     }
                 });
             }
@@ -870,6 +1033,20 @@
         setupModal('jumlah-penduduk-card', 'jumlah-penduduk-modal', 'close-jumlah-penduduk-modal');
         setupModal('luas-wilayah-card', 'luas-wilayah-modal', 'close-luas-wilayah-modal');
         setupModal('rt-rw-card', 'rt-rw-modal', 'close-rt-rw-modal');
+        // Note: The product modals are handled by the global openModal/closeModal functions
+        // called via onclick attributes in the HTML.
+        // We still need to add listeners for closing when clicking the background.
+        const productModals = ['modalCelana', 'modalJasmine', 'modalAbon', 'modalRengginang', 'modalSabun', 'modalLilin'];
+        productModals.forEach(modalId => {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal(modalId);
+                    }
+                });
+            }
+        });
     });
 //     <script>
 //     document.addEventListener('DOMContentLoaded', () => {
