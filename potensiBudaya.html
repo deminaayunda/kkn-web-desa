@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Kaliprau - Jasmine Village</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+        /* Menggunakan font Poppins sebagai default */
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Warna oranye dari tema Anda */
+        .text-f28500 { color: #F28500; }
+        /* Warna hijau dari tema Anda */
+        .text-65b741 { color: #65B741; }
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+        /* Default tab link style */
+        .tab-link {
+            transition: background-color 0.2s, color 0.2s;
+        }
+        
+        /* Hover style for ONLY non-active tabs */
+        .tab-link:not(.active):hover {
+            background-color: #f3f4f6; /* Tailwind's gray-100 */
+        }
+
+        /* Active tab style */
+        .tab-link.active {
+            background-color: #65B741;
+            color: white;
+        }
+        /* Custom styles for the new Swiper carousel */
+        .sedekah-swiper .swiper-button-next,
+        .sedekah-swiper .swiper-button-prev {
+            color: #FFFFFF;
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            transition: background-color 0.2s;
+        }
+        .sedekah-swiper .swiper-button-next:hover,
+        .sedekah-swiper .swiper-button-prev:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .sedekah-swiper .swiper-button-next::after,
+        .sedekah-swiper .swiper-button-prev::after {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .sedekah-swiper .swiper-pagination-bullet-active {
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+<body class="bg-[#FDFDFD] text-[#3C3C3C]">
+
+    <!-- Header / Navigasi -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2">
+                    <img src="images/logo_kaliprau.png" onerror="this.onerror=null; this.src='https://placehold.co/100x40/65B741/ffffff?text=Logo';" alt="Logo Desa Kaliprau" class="h-10">
+                </a>
+                
+                <!-- Menu Navigasi untuk Desktop -->
+                <nav class="hidden lg:flex items-center space-x-5">
+                    <a href="#profil" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Profil Desa</a>
+                    <a href="#pemerintahan" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Pemerintahan</a>
+                    <a href="#potensi" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Potensi & Produk</a>
+                    <a href="#edukasi" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Edukasi</a>
+                    <a href="#stunting" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Stunting</a>
+                    <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300 flex items-center">
+                        Berita Kaliprau <i data-lucide="arrow-up-right" class="h-4 w-4 ml-1"></i>
+                    </a>
+                </nav>
+
+                <!-- Tombol Menu Mobile -->
+                <button id="mobile-menu-button" class="lg:hidden text-[#3C3C3C]" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="h-7 w-7"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Menu Mobile (Tersembunyi secara default) -->
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4 border-t border-gray-200">
+            <a href="#profil" class="block py-2 text-gray-700 hover:text-[#F28500]">Profil Desa</a>
+            <a href="#pemerintahan" class="block py-2 text-gray-700 hover:text-[#F28500]">Pemerintahan</a>
+            <a href="#potensi" class="block py-2 text-gray-700 hover:text-[#F28500]">Potensi Desa</a>
+            <a href="#edukasi" class="block py-2 text-gray-700 hover:text-[#F28500]">Edukasi</a>
+            <a href="#stunting" class="block py-2 text-gray-700 hover:text-[#F28500]">Stunting</a>
+            <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="block py-2 text-gray-700 hover:text-[#F28500]">Berita Kaliprau</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative bg-gray-800">
+            <!-- Potensi Desa Swiper Card -->
+                    <div class="absolute inset-0 bg-black bg-opacity-40 z-0"></div>
+                    <div class="potensi-card group relative overflow-hidden shadow-lg h-80">
+                        <!-- Swiper Container -->
+                        <div class="swiper potensi-swiper absolute inset-0 w-full h-full">
+                            <div class="swiper-wrapper">
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide bg-cover bg-center" style="background-image: url('images/Sedekah bumi.jpg');"></div>
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide bg-cover bg-center" style="background-image: url('images/Tari melati.jpg');"></div>
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide bg-cover bg-center" style="background-image: url('images/Nyadran(2).jpg');"></div>
+                        </div>
+                        <!-- Overlay content -->
+                        <div class="absolute inset-0 bg-black bg-opacity-40 z-10 text-white flex flex-col items-center justify-center text-center">
+                            <h3 class="text-4xl font-bold">Jejak Budaya</h3>
+                            <p class="mt-1 text-sm">Menggali Kearifan Desa Kaliprau</p>
+                        </div>
+                    </div>
+            </div>
+        </section>
+        <!-- Content Section -->
+        <section class="relative -mt-16 md:-mt-24 z-10 pb-20">
+            <!-- TAMBAHIN TOMBOL BACK -->
+             
+            <div class="container mx-auto px-6">
+                <div class="bg-white rounded-xl shadow-2xl p-6 md:p-10">
+                    <div class="mb-6">
+                        <a href="index.html#potensi-desa" class="inline-flex items-center text-sm font-semibold text-green-700 hover:underline">
+                            <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+                            Kembali
+                        </a>
+                    </div>
+                    <div class="md:flex md:gap-8">
+                        <ul class="flex-column space-y-2 text-sm font-medium text-gray-500 md:w-1/4 mb-6 md:mb-0">
+                            <li>
+                                <a href="#" class="tab-link active inline-flex items-center px-4 py-3 rounded-lg w-full" data-tab="sedekah-bumi">
+                                    <i data-lucide="leaf" class="w-5 h-5 mr-2"></i>
+                                    Sedekah Bumi
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="tab-link inline-flex items-center px-4 py-3 rounded-lg w-full" data-tab="nyadran">
+                                    <i data-lucide="brush-cleaning" class="w-5 h-5 mr-2"></i>
+                                    Nyadran
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="tab-link inline-flex items-center px-4 py-3 rounded-lg w-full" data-tab="tari-melati">
+                                    <i data-lucide="person-standing" class="w-5 h-5 mr-2"></i>
+                                    Tari Tani Melati
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="tab-link inline-flex items-center px-4 py-3 rounded-lg w-full" data-tab="sanggar-tari">
+                                    <i data-lucide="land-plot" class="w-5 h-5 mr-2"></i>
+                                    Sanggar Tari
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="w-full md:w-3/4">
+                            <!-- Konten Sedekah Bumi -->
+                            <div id="sedekah-bumi" class="tab-content p-6 bg-gray-50 rounded-lg">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3">Sedekah Bumi: Warisan Syukur dari Tanah Kaliprau</h3>
+                                <!-- <img src="images/Sedekah bumi.jpg" alt="Sedekah Bumi" class="w-full h-64 object-cover rounded-lg mb-4 shadow-md"> -->
+                                 
+
+                                <!-- Swiper Carousel for Sedekah Bumi -->
+                                <div class="swiper sedekah-swiper relative w-full mb-4 rounded-lg overflow-hidden h-56 md:h-96">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="images/Sedekah bumi(1).jpg" class="w-full h-full object-cover" alt="Sedekah Bumi 1">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="images/Sedekah bumi(2).jpg" class="w-full h-full object-cover" alt="Sedekah Bumi 2">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="images/Sedekah bumi.jpg" class="w-full h-full object-cover" alt="Sedekah Bumi 3">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
+                                </div>
+
+                                <p class="text-gray-700 mt-4">Setelah bulan Ramadhan usai, masyarakat Desa Kaliprau bersiap menyambut satu tradisi penting yang begitu bermakna yaitu sedekah bumi. Tradisi ini telah lama menjadi bagian dari ritme kehidupan desa atau sebuah wujud syukur atas hasil panen yang diberikan oleh alam. Digelar di halaman balai desa, masyarakat berkumpul masing-masing membawa makanan atau hasil bumi dari ladang dan kebun mereka. Semua dikumpulkan, disusun rapi, dan didoakan bersama dalam suasana yang khidmat dan penuh kebersamaan lalu disantap secara kolektif.</p>
+                                <p class="text-gray-700 mt-4">Sedekah bumi bukan sekadar upacara simbolik. Lebih dari itu, ia menjadi ruang untuk menghormati leluhur dan mengingat kembali asal-usul tanah yang mereka pijak. Dalam kesempatan ini, para sesepuh desa akan kembali mengisahkan sejarah Kaliprau, bagaimana desa ini berdiri, siapa yang membuka lahan pertama, dan bagaimana nilai-nilai hidup diwariskan dari generasi ke generasi. Dari kisah-kisah itulah, identitas kolektif masyarakat Kaliprau dibentuk dan dipertahankan. Anak-anak dan remaja duduk menyimak, menerima warisan yang tak tertulis namun mengakar kuat di dalam jiwa mereka: warisan rasa syukur, rasa hormat, dan rasa memiliki terhadap tanah kelahiran. Sedekah bumi bukan hanya sebuah tradisi, namun menjadi jembatan antara masa lalu dan masa depan. Sebuah pengingat bahwa keberkahan bukan hanya datang dari hasil panen, tetapi juga dari kebersamaan dan ingatan kolektif yang terus dijaga.</p>
+                                <p class="text-gray-700 mt-4">Tradisi Sedekah Bumi di Kaliprau bukan hanya ungkapan syukur kepada alam, tetapi juga menjadi ruang bersama yang mempererat solidaritas sosial antarwarga dalam suasana yang damai dan setara, dimana hal ini selaras dengan Sustainable Development Goals (SDGs) Desa nomor 16 “Desa Damai Berkeadilan”. Di saat yang sama, keterlibatan kelembagaan desa dalam mengorganisir tradisi ini menunjukkan bagaimana budaya lokal dapat tetap hidup dan relevan di tengah perubahan zaman, mencerminkan SDGs Desa nomor 18 “Kelembagaan Desa Dinamis dan Budaya Desa Adaptif”. Sedekah Bumi adalah bukti bahwa harmoni sosial dan kekuatan budaya dapat berjalan beriringan menuju pembangunan desa yang berkelanjutan.</p>
+                            </div>
+                            <!-- Konten Nyadran -->
+                            <div id="nyadran" class="tab-content p-6 bg-gray-50 rounded-lg hidden">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3">Nyadran: Ziarah Spiritual Menuju Kesucian</h3>
+                                <!-- <img src="images/Nyadran(2).jpg" alt="Nyadran" class="w-full h-64 object-cover rounded-lg mb-4 shadow-md"> -->
+                                 <!-- Swiper Carousel for Sedekah Bumi -->
+                                <div class="swiper sedekah-swiper relative w-full mb-4 rounded-lg overflow-hidden h-56 md:h-96">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="images/Nyadran(1).jpg" class="w-full h-full object-cover" alt="Sedekah Bumi 1">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="images/Nyadran(2).jpg" class="w-full h-full object-cover" alt="Sedekah Bumi 2">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="images/Nyadran.jpg" class="w-full h-full object-cover" alt="Sedekah Bumi 3">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
+                                </div>
+                                <p class="text-gray-700">Nyadran adalah tradisi yang khas bagi Kaliprau, sebuah bentuk kepercayaan masyarakat lokal yang secara rutin dijalankan menjelang tibanya bulan puasa. Dalam prosesi ini, warga bersama-sama mendatangi  untuk melakukan doa dan ritual penghormatan kepada leluhur. Lebih dari sekadar tradisi ziarah, Nyadran menjadi budaya yang ikut menyatukan spiritualitas, sejarah, dan rasa hormat terhadap leluhur. Ini menjadi refleksi dari kedalaman budaya lokal yang mengutamakan kesucian, keterhubungan antar generasi, dan ketundukan pada nilai adiluhung, suatu nilai yang sangat relevan dalam membangun narasi diplomasi budaya yang menyejukkan dan damai.</p>
+                                <p class="text-gray-700 mt-4">Tradisi nyadran, yang masih lestari di kalangan masyarakat setempat, biasanya dilaksanakan sekali dalam setahun menjelang bulan puasa. Dalam pelaksanaannya, masyarakat berkumpul dan membawa selamatan, berupa makanan yang dihaturkan sebagai bentuk doa bersama untuk para leluhur. Meski sederhana, kegiatan ini menjadi momen penting untuk memperkuat ikatan sosial dan melestarikan nilai-nilai spiritual yang diwariskan secara turun-temurun.</p>
+                                <p class="text-gray-700 mt-4">Dibalik kesakralannya, Nyadran mencerminkan nilai-nilai perdamaian, kebersamaan, dan penghormatan lintas generasi yang sejalan dengan SDGs Desa Tujuan 16: Desa Damai Berkeadilan. Keberlanjutan tradisi ini juga menjadi bukti bahwa budaya lokal Kaliprau terus dijaga dan dijalankan secara kolektif, mencerminkan Tujuan 18: Kelembagaan Desa Dinamis dan Budaya Desa Adaptif, di mana adat bukan hanya dikenang, tapi dihidupkan bersama.</p>
+                            </div>
+                            <!-- Konten Tari Tani Melati -->
+                            <div id="tari-melati" class="tab-content p-6 bg-gray-50 rounded-lg hidden">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3">Tari Tani Melati: Budaya Lokal dalam Strategi Desa Wisata Kaliprau</h3>
+                                <!-- <img src="images/Tari melati.jpg" alt="Tari Tani Melati" class="w-full h-64 object-cover rounded-lg mb-4 shadow-md"> -->
+                                 <!-- Swiper Carousel for Sedekah Bumi -->
+                                <div class="swiper sedekah-swiper relative w-full mb-4 rounded-lg overflow-hidden h-56 md:h-96">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="images/Tari melati.jpg" class="w-full h-full object-cover" alt="Sedekah Bumi 1">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="images/Tim tari melati.jpg" class="w-full h-full object-cover" alt="Sedekah Bumi 2">
+                                        </div>
+                                        <!-- <div class="swiper-slide">
+                                            <img src="images/Sedekah bumi.jpg" class="w-full h-full object-cover" alt="Sedekah Bumi 3">
+                                        </div> -->
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
+                                </div>
+                                <p class="text-gray-700">Bunga melati di Desa Kaliprau diwujudkan melalui pelestarian dan penciptaan budaya lokal yang mencerminkan identitas masyarakatnya. Bunga melati, yang menjadi bagian penting dalam kehidupan warga Kaliprau, menginspirasi lahirnya karya budaya khas berupa Tari Tani Melati. Tari Tani Melati oleh Bayu Kusuma Listyanto dari Sanggar Tari Kaloka, Pemalang. Tarian ini merepresentasikan aktivitas sehari-hari para petani bunga melati, mulai dari bangun pagi, berdoa, bekerja di kebun, memetik dan menyortir bunga, hingga meronce melati menjadi rangkaian.</p>
+                                <p class="text-gray-700 mt-4">Tari Tani Melati memiliki tiga versi berdasarkan usia penari: anak-anak, remaja, dan dewasa. Awalnya ditarikan secara berpasangan, namun karena menurunnya minat generasi muda, kini lebih sering dibawakan oleh penari perempuan saja. Selain sebagai pertunjukan, tarian ini juga digunakan sebagai tarian penyambutan tamu penting, diiringi dengan pengalungan bunga melati. Sayangnya, saat ini Tari Tani Melati mulai jarang ditampilkan dan hanya dikenal secara terbatas oleh masyarakat desa. Padahal, tarian ini tidak hanya memperkuat identitas budaya Kaliprau, tetapi juga berpotensi menjadi bagian penting dalam pengembangan pariwisata berbasis budaya lokal.</p>
+                                <p class="text-gray-700 mt-4">Meski begitu keberadaan Tari Tani Melati sejalan dengan SDGs Desa Tujuan 18, karena menunjukkan bahwa budaya desa tidak hanya dijaga sebagai warisan, tetapi juga dikembangkan sebagai kekuatan sosial yang hidup, inklusif, dan strategis untuk masa depan.</p>
+                            </div>
+                            <div id="sanggar-tari" class="tab-content p-6 bg-gray-50 rounded-lg hidden">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3">Tari Tani Melati</h3>
+                                <img src="images/Tari melati.jpg" alt="Tari Tani Melati" class="w-full h-64 object-cover rounded-lg mb-4 shadow-md">
+                                <p class="mb-2 text-gray-700">Sebagai desa yang dikenal dengan "Jasmine Village", Kaliprau memiliki tarian khas yaitu Tari Tani Melati. Tarian ini menggambarkan kehidupan para petani melati, mulai dari menanam, merawat, hingga memanen bunga melati yang menjadi ikon desa.</p>
+                                <p class="text-gray-700">Tarian ini sering ditampilkan dalam acara-acara desa sebagai simbol kebanggaan dan identitas budaya Kaliprau.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-[#3C3C3C] text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-[#F28500]">Desa Kaliprau</h3>
+                    <p class="text-gray-300">Jasmine Village<br>Kecamatan Ulujami, Kabupaten Pemalang<br>Jawa Tengah</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-[#F28500]">Tautan Penting</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#profil" class="text-gray-300 hover:text-white">Profil Desa</a></li>
+                        <li><a href="#pemerintahan" class="text-gray-300 hover:text-white">Pemerintahan</a></li>
+                        <li><a href="#potensi-produk" class="text-gray-300 hover:text-white">Potensi & Produk</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-[#F28500]">Ikuti Kami</h3>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i data-lucide="instagram" class="h-6 w-6"></i></a>
+                        <a href="https://www.facebook.com/desakaliprau/?locale=id_ID" target="_blank" class="text-gray-300 hover:text-white"><i data-lucide="facebook" class="h-6 w-6"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i data-lucide="youtube" class="h-6 w-6"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Desa Kaliprau. Didukung oleh Tim KKN Undip.</p>
+            </div>
+        </div>
+    </footer>
+
+   <script>
+        // Inisialisasi Lucide Icons
+        lucide.createIcons();
+
+        // Inisialisasi Swiper.js untuk slider hero
+        // var heroSwiper = new Swiper('.hero-swiper', {
+        //     loop: true,
+        //     effect: 'fade',
+        //     autoplay: {
+        //         delay: 5000,
+        //         disableOnInteraction: false,
+        //     },
+        //     pagination: {
+        //         el: '.swiper-pagination',
+        //         clickable: true,
+        //     },
+        //     navigation: {
+        //         nextEl: '.swiper-button-next',
+        //         prevEl: '.swiper-button-prev',
+        //     },
+        // });
+
+        // Fungsionalitas untuk Menu Mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fungsionalitas untuk menggulir ke hash saat halaman dimuat (dari halaman lain)
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash) {
+                const targetElement = document.querySelector(window.location.hash);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
+    <!-- Tambahkan script Swiper.js di bawah sebelum penutup body -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+   <script>
+        lucide.createIcons();
+
+        // Inisialisasi Swiper.js untuk banner
+        new Swiper('.potensi-swiper', {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
+            },
+        });
+
+        // Inisialisasi Swiper.js untuk galeri Sedekah Bumi
+        new Swiper('.sedekah-swiper', {
+            loop: true,
+            effect: 'slide', // Mengubah efek transisi menjadi slide biasa
+            autoplay: {
+                delay: 3500,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Script untuk Tab
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Nonaktifkan semua tab
+                tabLinks.forEach(item => item.classList.remove('active'));
+                
+                // Sembunyikan semua konten
+                tabContents.forEach(content => content.classList.add('hidden'));
+
+                // Aktifkan tab yang diklik
+                link.classList.add('active');
+
+                // Tampilkan konten yang sesuai
+                const tabId = link.getAttribute('data-tab');
+                const activeContent = document.getElementById(tabId);
+                if (activeContent) {
+                    activeContent.classList.remove('hidden');
+                }
+            });
+        });
+   </script>
+   
+</body>
+</html>
