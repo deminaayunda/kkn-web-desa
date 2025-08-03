@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desa Kaliprau - Jasmine Village</title>
+    <link rel="icon" type="image/png" href="images/logo_kaliprau.png">
+
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -134,27 +140,27 @@
             <!-- Swiper Container -->
             <div class="swiper home-swiper absolute inset-0 w-full h-full z-0">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide bg-cover bg-center" style="background-image: url('images/bg1.JPG');">
-                        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="swiper-slide bg-cover bg-center relative h-full" style="background-image: url('images/bg1.JPG');">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 pointer-events-none"></div>
                     </div>
-                    <div class="swiper-slide bg-cover bg-center" style="background-image: url('images/bg2.JPG');">
-                        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="swiper-slide bg-cover bg-center relative h-full" style="background-image: url('images/bg2.JPG');">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 pointer-events-none"></div>
                     </div>
-                    <div class="swiper-slide bg-cover bg-center" style="background-image: url('images/bg-melati1.jpg');">
-                        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="swiper-slide bg-cover bg-center relative h-full" style="background-image: url('images/bg-melati1.jpg');">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 pointer-events-none"></div>
                     </div>
-                    <div class="swiper-slide bg-cover bg-center" style="background-image: url('images/bg-melati2.jpg');">
-                        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="swiper-slide bg-cover bg-center relative h-full" style="background-image: url('images/bg-melati2.jpg');">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 pointer-events-none"></div>
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <!-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> -->
             </div>
             
             <!-- Gradient & Text Container -->
             <div class="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-                <div class="w-full pt-32">
+                <div class="w-full pt-32 pointer-events-none">
                     <div class="container mx-auto px-6 pb-16 text-center pointer-events-auto">
                         <h1 class="text-4xl md:text-6xl font-bold mb-2 drop-shadow-xl" style="color: #FDFDFD;">
                             Selamat Datang di Kaliprau
@@ -418,7 +424,7 @@
                             </div>
                             <div class="p-4 text-center flex flex-col flex-grow justify-between">
                                 <div>
-                                    <h3 class="text-base font-semibold text-gray-800 h-12 flex items-center justify-center">Lilin Melaure</h3>
+                                    <h3 class="text-base font-semibold text-gray-800 h-12 flex items-center justify-center">Lilin Marlene</h3>
                                     <p class="text-gray-500 text-sm mt-1">Harga spesial</p>
                                 </div>
                                 <div class="pt-4">
@@ -449,11 +455,11 @@
                 <p class="text-lg text-teal-700 mt-2 max-w-2xl mx-auto">Materi edukatif untuk kemajuan masyarakat Desa Kaliprau.</p>
             </div>
             
-            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
                 <!-- Card 1: Digital Marketing -->
                 <div onclick="window.open('https://drive.google.com/file/d/1NObWw8zgcaVXUZiIg-dZbzQNvHo09jCI/view?usp=sharing', '_blank')" class="cursor-pointer bg-gradient-to-br from-orange-50 to-amber-100/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col text-center">
-                    <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                    <div class="bg-white/70 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto shadow-md">
                         <i data-lucide="trending-up" class="h-8 w-8 text-orange-500"></i>
                     </div>
                     <div class="mt-4 flex-grow">
@@ -469,7 +475,7 @@
 
                 <!-- Card 2: Modul Tiktokshop -->
                 <div onclick="window.open('https://drive.google.com/file/d/1-PtOZdzyIaf68zvlTMLrRSOcYQtfCfnm/view?usp=drivesdk', '_blank')" class="cursor-pointer bg-gradient-to-br from-red-50 to-black-200/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col text-center">
-                    <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                    <div class="bg-white/70 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto shadow-md">
                         <i data-lucide="video" class="h-8 w-8 text-black-700"></i>
                     </div>
                     <div class="mt-4 flex-grow">
@@ -485,7 +491,7 @@
 
                 <!-- Card 3: Kesehatan Mental -->
                 <div onclick="window.open('posterMental.html', '_blank')" class="cursor-pointer bg-gradient-to-br from-purple-50 to-indigo-100/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col text-center">
-                    <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                    <div class="bg-white/70 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto shadow-md">
                         <i data-lucide="brain-circuit" class="h-8 w-8 text-purple-500"></i>
                     </div>
                     <div class="mt-4 flex-grow">
@@ -501,7 +507,7 @@
 
                 <!-- Card 4: Pergaulan Bebas -->
                 <div onclick="window.open('posterhukum.html', '_blank')" class="cursor-pointer bg-gradient-to-br from-rose-50 to-red-100/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col text-center">
-                    <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                    <div class="bg-white/70 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto shadow-md">
                         <i data-lucide="shield-off" class="h-8 w-8 text-red-500"></i>
                     </div>
                     <div class="mt-4 flex-grow">
@@ -516,7 +522,7 @@
                 </div>
                 <!-- Card 5: Otomatisasi HPP -->
                 <div onclick="window.open('https://docs.google.com/spreadsheets/d/13t-xfyGKYRTkQxWe5xo3vGibUNuS2IoQ/edit?usp=sharing&ouid=100839945506337559298&rtpof=true&sd=true', '_blank')" class="cursor-pointer bg-gradient-to-br from-green-50 to-emerald-100/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col text-center">
-                    <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                    <div class="bg-white/70 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto shadow-md">
                         <i data-lucide="file-spreadsheet" class="h-8 w-8 text-green-500"></i>
                     </div>
                     <div class="mt-4 flex-grow">
@@ -532,7 +538,7 @@
 
                 <!-- Card 6: Akuntansi Sederhana -->
                 <div onclick="window.open('https://docs.google.com/spreadsheets/d/1qqf8S_yNoIqHIho7_5b22Tv4B_zR8AbI/edit?usp=sharing&ouid=100839945506337559298&rtpof=true&sd=true', '_blank')" class="cursor-pointer bg-gradient-to-br from-emerald-100/60 to-green-50 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col text-center">
-                    <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                    <div class="bg-white/70 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto shadow-md">
                         <i data-lucide="calculator" class="h-8 w-8 text-green-500"></i>
                     </div>
                     <div class="mt-4 flex-grow">
@@ -548,7 +554,7 @@
 
                 <!-- Card 7: Budidaya Ayam -->
                 <div onclick="window.open('https://drive.google.com/file/d/1BEue2qjtbFefePqHgHY7s15Eufclgc7T/view?usp=drivesdk', '_blank')" class="cursor-pointer bg-gradient-to-br from-orange-50 to-red-100/60 p-6 rounded-2xl shadow-lg border border-white/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 flex flex-col text-center">
-                    <div class="bg-white/70 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-md">
+                    <div class="bg-white/70 rounded-full w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center mx-auto shadow-md">
                         <i data-lucide="feather" class="h-8 w-8 text-orange-400"></i>
                     </div>
                     <div class="mt-4 flex-grow">
@@ -614,7 +620,7 @@
     </section>
     
 
-    <section class="bg-white dark:bg-gray-900">
+    <section class="bg-white">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
             <div class="flex flex-col justify-center">
                 <h1 class="mb-4 text-4xl font-bold tracking-tight leading-none text-teal-700 md:text-5xl lg:text-6xl">Video Profile Desa Kaliprau</h1>
@@ -783,26 +789,26 @@
         <div class="bg-white rounded-lg p-6 max-w-lg w-full relative shadow-xl modal-content">
             <button onclick="closeModal('modalSabun')" class="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-2xl font-bold">&times;</button>
             <h3 class="text-xl font-bold mb-2">Detail Produk</h3>
-            <img src="images/Jasmine Flower.jpeg" alt="Sabun Melaure" class="w-full h-64 object-cover rounded-lg mb-4">
+            <img src="https://placehold.co/400x400/e5d839/ffffff?text=Coming Soon" alt="Sabun Melaure" class="w-full h-64 object-cover rounded-lg mb-4">
             <p class="text-gray-700 mb-4">
                 Detail produk untuk Sabun Melaure akan segera hadir.
             </p>
-            <a href="https://wa.me/+6281944236705" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition text-sm">
+            <!-- <a href="https://wa.me/+6281944236705" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition text-sm">
                 📞 Pesan via WhatsApp
-            </a>
+            </a> -->
         </div>
     </div>
     <div id="modalLilin" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden modal-overlay p-4">
         <div class="bg-white rounded-lg p-6 max-w-lg w-full relative shadow-xl modal-content">
             <button onclick="closeModal('modalLilin')" class="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-2xl font-bold">&times;</button>
             <h3 class="text-xl font-bold mb-2">Detail Produk</h3>
-            <img src="https://placehold.co/600x400/65B741/ffffff?text=Lilin+Melaure" alt="Lilin Melaure" class="w-full h-64 object-cover rounded-lg mb-4">
+            <img src="https://placehold.co/400x400/e5d839/ffffff?text=Coming Soon" alt="Lilin Melaure" class="w-full h-64 object-cover rounded-lg mb-4">
             <p class="text-gray-700 mb-4">
-                Detail produk untuk Lilin Melaure akan segera hadir.
+                Detail produk untuk Lilin Marlene akan segera hadir.
             </p>
-            <a href="https://wa.me/+6281944236705" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition text-sm">
+            <!-- <a href="https://wa.me/+6281944236705" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition text-sm">
                 📞 Pesan via WhatsApp
-            </a>
+            </a> -->
         </div>
     </div>
 
@@ -876,7 +882,7 @@
     
     <!-- Main Application Script -->
     <script>
-    window.onload = function() {
+   document.addEventListener('DOMContentLoaded', function() {
         // Initialize Lucide Icons
         lucide.createIcons();
 
@@ -911,6 +917,7 @@
             loop: true,
             effect: 'slide', // 'fade' is also a good option
             grabCursor: true,
+            
             autoplay: {
                 delay: 4000,
                 disableOnInteraction: false,
@@ -923,6 +930,7 @@
                 nextEl: '.home-swiper .swiper-button-next', // Be more specific
                 prevEl: '.home-swiper .swiper-button-prev', // Be more specific
             },
+            touchEventsTarget: 'container',
         });
 
         // 2. Potensi Desa Swipers (Handles multiple instances)
@@ -965,7 +973,7 @@
 
     
 
-   }; // END DOMContentLoaded // === GLOBAL MODAL FUNCTIONS ===
+   });// END DOMContentLoaded // === GLOBAL MODAL FUNCTIONS ===
     function openModal(id) {
         const modal = document.getElementById(id);
         if (modal) {
