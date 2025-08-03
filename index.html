@@ -188,28 +188,50 @@
                                 <h4 class="font-bold text-lg">Lokasi</h4>
                                 <p class="text-gray-600">Kec. Ulujami, Kab. Pemalang</p>
                             </div>
-                            <div id="luas-wilayah-card" class="bg-gray-50 p-4 rounded-lg cursor-pointer hover:shadow-md transition-shadow duration-300">
-                                <i data-lucide="ruler" class="h-8 w-8 text-teal-500 mb-2"></i>
-                                <h4 class="font-bold text-lg">Luas Wilayah</h4>
-                                <p class="text-gray-600">631,66 ha</p>
+                            <div id="luas-wilayah-card" class="group bg-gray-50 p-4 rounded-lg cursor-pointer hover:shadow-md transition-shadow duration-300 flex flex-col justify-between text-left">
+                                <div>
+                                    <i data-lucide="ruler" class="h-8 w-8 text-teal-500 mb-2"></i>
+                                    <h4 class="font-bold text-lg">Luas Wilayah</h4>
+                                    <p class="text-gray-600">631,66 ha</p>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="inline-block bg-teal-500 text-white font-semibold py-1 px-3 rounded-md text-xs transition-colors duration-300 group-hover:bg-teal-600">
+                                        Lihat Detail
+                                    </div>
+                                </div>
                             </div>
-                            <div id="jumlah-penduduk-card" class="bg-gray-50 p-4 rounded-lg cursor-pointer hover:shadow-md transition-shadow duration-300">
-                                <i data-lucide="users" class="h-8 w-8 text-teal-500 mb-2"></i>
-                                <h4 class="font-bold text-lg">Jumlah Penduduk</h4>
-                                <p class="text-gray-600">± 8.200 Jiwa</p>
+                            <div id="jumlah-penduduk-card" class="group bg-gray-50 p-4 rounded-lg cursor-pointer hover:shadow-md transition-shadow duration-300 flex flex-col justify-between text-left">
+                                <div>
+                                    <i data-lucide="users" class="h-8 w-8 text-teal-500 mb-2"></i>
+                                    <h4 class="font-bold text-lg">Jumlah Penduduk</h4>
+                                    <p class="text-gray-600">± 8.200 Jiwa</p>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="inline-block bg-teal-500 text-white font-semibold py-1 px-3 rounded-md text-xs transition-colors duration-300 group-hover:bg-teal-600">
+                                        Lihat Detail
+                                    </div>
+                                </div>
                             </div>
-                            <div id="rt-rw-card" class="bg-gray-50 p-4 rounded-lg cursor-pointer hover:shadow-md transition-shadow duration-300">
-                                <i data-lucide="home" class="h-8 w-8 text-teal-500 mb-2"></i>
-                                <h4 class="font-bold text-lg">RT / RW</h4>
-                                <p class="text-gray-600">32 RT / 6 RW</p>
+                            <div id="rt-rw-card" class="group bg-gray-50 p-4 rounded-lg cursor-pointer hover:shadow-md transition-shadow duration-300 flex flex-col justify-between text-left">
+                                <div>
+                                    <i data-lucide="home" class="h-8 w-8 text-teal-500 mb-2"></i>
+                                    <h4 class="font-bold text-lg">RT / RW</h4>
+                                    <p class="text-gray-600">33 RT / 6 RW</p>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="inline-block bg-teal-500 text-white font-semibold py-1 px-3 rounded-md text-xs transition-colors duration-300 group-hover:bg-teal-600">
+                                        Lihat Detail
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- Kolom Kanan: Peta Wilayah -->
-                    <div class="lg:w-1/2 w-full flex flex-col">
-                        <div class="flex-grow rounded-xl overflow-hidden shadow-lg">
-                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15846.54147779917!2d109.52906485!3d-6.814321499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fd50444911165%3A0x5027a76e3565a30!2sKaliprau%2C%2C%20Kec.%20Ulujami%2C%20Kabupaten%20Pemalang%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1721474831868!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full"></iframe>
+                        <div class="lg:w-1/2 w-full flex flex-col">
+                        <div class="rounded-xl overflow-hidden shadow-lg lg:mt-12">
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15846.54147779917!2d109.52906485!3d-6.814321499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fd50444911165%3A0x5027a76e3565a30!2sKaliprau%2C%2C%20Kec.%20Ulujami%2C%20Kabupaten%20Pemalang%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1721474831868!5m2!1sid!2sid" width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full"></iframe>
                         </div>
+
                         <!-- Bagian Demografi di bawah peta -->
                         <div class="mt-8 text-center lg:text-left">
                             <h3 class="text-xl font-bold text-teal-700 mb-2">Demografi Desa Kaliprau</h3>
@@ -234,25 +256,43 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Card Struktur Organisasi -->
-                    <a href="sotk.html" class="block bg-white p-6 rounded-lg shadow-md text-center cursor-pointer hover:shadow-xl transition-shadow duration-300">
-                        <i data-lucide="users-2" class="h-12 w-12 mx-auto text-teal-500"></i>
-                        <h3 class="text-xl font-bold mt-4">Struktur Organisasi</h3>
-                        <p class="text-gray-600 mt-2">Bagan, tugas, dan tanggung jawab perangkat desa.</p>
-                        
+                    <a href="sotk.html" class="group block bg-white p-6 rounded-lg shadow-md text-center cursor-pointer hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between">
+                        <div>
+                            <i data-lucide="users-2" class="h-12 w-12 mx-auto text-teal-500"></i>
+                            <h3 class="text-xl font-bold mt-4">Struktur Organisasi</h3>
+                            <p class="text-gray-600 mt-2">Bagan, tugas, dan tanggung jawab perangkat desa.</p>
+                        </div>
+                        <div class="mt-4">
+                            <div class="inline-block bg-teal-500 text-white font-semibold py-2 px-5 rounded-lg text-sm transition-colors duration-300 group-hover:bg-teal-600">
+                                Lihat Lebih Lanjut
+                            </div>
+                        </div>
                     </a>
                     <!-- Card Keuangan Desa -->
-                    <a href="keuangan_desa.html" class="block bg-white p-6 rounded-lg shadow-md text-center cursor-pointer hover:shadow-xl transition-shadow duration-300">
-                        <i data-lucide="file-pie-chart" class="h-12 w-12 mx-auto text-teal-500"></i>
-                        <h3 class="text-xl font-bold mt-4">Keuangan Desa</h3>
-                        <p class="text-gray-600 mt-2">APBD Desa, Realisasi APBDes, Penerimaan PBB</p>
-                        
+                    <a href="keuangan_desa.html" class="group block bg-white p-6 rounded-lg shadow-md text-center cursor-pointer hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between">
+                        <div>
+                            <i data-lucide="file-pie-chart" class="h-12 w-12 mx-auto text-teal-500"></i>
+                            <h3 class="text-xl font-bold mt-4">Keuangan Desa</h3>
+                            <p class="text-gray-600 mt-2">APBD Desa, Realisasi APBDes, Penerimaan PBB</p>
+                        </div>
+                        <div class="mt-4">
+                            <div class="inline-block bg-teal-500 text-white font-semibold py-2 px-5 rounded-lg text-sm transition-colors duration-300 group-hover:bg-teal-600">
+                                Lihat Lebih Lanjut
+                            </div>
+                        </div>
                     </a>
                     <!-- Card Data Aset Desa -->
-                    <a href="data_aset.html" class="block bg-white p-6 rounded-lg shadow-md text-center cursor-pointer hover:shadow-xl transition-shadow duration-300">
-                        <i data-lucide="archive" class="h-12 w-12 mx-auto text-teal-500"></i>
-                        <h3 class="text-xl font-bold mt-4">Data Aset Desa</h3>
-                        <p class="text-gray-600 mt-2">Informasi lengkap mengenai aset yang dimiliki oleh Desa Kaliprau.</p>
-                        
+                    <a href="data_aset.html" class="group block bg-white p-6 rounded-lg shadow-md text-center cursor-pointer hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between">
+                        <div>
+                            <i data-lucide="archive" class="h-12 w-12 mx-auto text-teal-500"></i>
+                            <h3 class="text-xl font-bold mt-4">Data Aset Desa</h3>
+                            <p class="text-gray-600 mt-2">Informasi lengkap mengenai aset yang dimiliki oleh Desa Kaliprau.</p>
+                        </div>
+                         <div class="mt-4">
+                            <div class="inline-block bg-teal-500 text-white font-semibold py-2 px-5 rounded-lg text-sm transition-colors duration-300 group-hover:bg-teal-600">
+                                Lihat Lebih Lanjut
+                            </div>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -651,82 +691,99 @@
         </div>
     </div>
     <div id="jumlah-penduduk-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden modal-overlay p-4">
-        <div class="bg-white rounded-lg shadow-xl p-8 relative modal-content w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
-            <button onclick="closeModal('jumlah-penduduk-modal')" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900">
-                <i data-lucide="x" class="h-6 w-6"></i>
-            </button>
+        <div class="bg-gray-50 rounded-lg shadow-xl overflow-hidden relative modal-content w-full max-w-2xl">
+            <div class="bg-teal-800 text-white p-4 flex justify-between items-center">
+                <h2 class="text-xl font-bold flex items-center"><i data-lucide="users" class="mr-2"></i>Data Kependudukan</h2>
+                <button onclick="closeModal('jumlah-penduduk-modal')" class="text-white hover:bg-teal-700 rounded-full p-1">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
             <div class="p-6">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-f28500">Jumlah Penduduk Desa Kaliprau</h2>
-                <div class="gradient-green-dark text-white rounded-lg p-6 mb-8 shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Komposisi Penduduk Berdasarkan Gender</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                        <div class="flex flex-col items-center"><i data-lucide="users" class="h-12 w-12 mb-2 text-white"></i><p class="text-3xl font-bold">8715</p><p class="text-sm">Total Penduduk</p></div>
-                        <div class="flex flex-col items-center"><i data-lucide="user" class="h-12 w-12 mb-2 text-white"></i><p class="text-3xl font-bold">4353</p><p class="text-sm">Laki-laki</p></div>
-                        <div class="flex flex-col items-center"><i data-lucide="user" class="h-12 w-12 mb-2 text-white"></i><p class="text-3xl font-bold">4362</p><p class="text-sm">Perempuan</p></div>
-                        <div class="flex flex-col items-center"><i data-lucide="home" class="h-12 w-12 mb-2 text-white"></i><p class="text-3xl font-bold">1662</p><p class="text-sm">Kepala Keluarga</p></div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                        <i data-lucide="users" class="h-10 w-10 text-teal-500 mx-auto mb-2"></i>
+                        <p class="text-3xl font-bold text-teal-800">8.715</p>
+                        <p class="text-sm text-gray-500">Total Penduduk</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                        <i data-lucide="user" class="h-10 w-10 text-teal-500 mx-auto mb-2"></i>
+                        <p class="text-3xl font-bold text-teal-800">4.353</p>
+                        <p class="text-sm text-gray-500">Laki-laki</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                        <i data-lucide="user" class="h-10 w-10 text-teal-500 mx-auto mb-2"></i>
+                        <p class="text-3xl font-bold text-teal-800">4.362</p>
+                        <p class="text-sm text-gray-500">Perempuan</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md text-center">
+                        <i data-lucide="home" class="h-10 w-10 text-teal-500 mx-auto mb-2"></i>
+                        <p class="text-3xl font-bold text-teal-800">1.662</p>
+                        <p class="text-sm text-gray-500">Kepala Keluarga</p>
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4 text-65b741">Detail Data Penduduk:</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li>Jumlah Penduduk: 8.715</li>
-                        <li>Laki-Laki: 4.353 Orang</li>
-                        <li>Perempuan: 4.362 Orang</li>
-                        <li>Kepala Keluarga: 1.662 KK</li>
-                    </ul>
-                    <p class="text-sm text-gray-500 mt-4">Data berdasarkan sensus terakhir.</p>
+                <div class="mt-4 text-xs text-center text-gray-400">
+                    <p>Data berdasarkan sensus terakhir.</p>
                 </div>
             </div>
         </div>
     </div>
+
     <div id="luas-wilayah-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden modal-overlay p-4">
-        <div class="bg-white rounded-lg shadow-xl p-8 relative modal-content w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
-            <button onclick="closeModal('luas-wilayah-modal')" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900">
-                <i data-lucide="x" class="h-6 w-6"></i>
-            </button>
+        <div class="bg-gray-50 rounded-lg shadow-xl overflow-hidden relative modal-content w-full max-w-2xl">
+            <div class="bg-teal-800 text-white p-4 flex justify-between items-center">
+                <h2 class="text-xl font-bold flex items-center"><i data-lucide="map" class="mr-2"></i>Geografi & Luas Wilayah</h2>
+                <button onclick="closeModal('luas-wilayah-modal')" class="text-white hover:bg-teal-700 rounded-full p-1">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
             <div class="p-6">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-f28500">Geografi & Luas Wilayah Desa Kaliprau</h2>
-                <div class="gradient-orange-light text-white rounded-lg p-6 mb-8 shadow-lg text-center">
-                    <i data-lucide="map" class="h-16 w-16 mb-4 text-white mx-auto"></i>
-                    <p class="text-4xl font-bold">631,66 ha</p>
-                    <p class="text-lg">Luas Wilayah Desa Kaliprau</p>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center mb-6">
+                    <i data-lucide="ruler" class="h-12 w-12 text-teal-500 mx-auto mb-3"></i>
+                    <p class="text-4xl font-bold text-teal-800">631,66 ha</p>
+                    <p class="text-md text-gray-500">Total Luas Wilayah Desa</p>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4 text-65b741">Batas-batas Wilayah Desa Kaliprau:</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-                        <li>Sebelah Utara: Laut Jawa</li>
-                        <li>Sebelah Selatan: Desa Wiyorowetan dan Desa Bumirejo</li>
-                        <li>Sebelah Barat: Desa Kertosari</li>
-                        <li>Sebelah Timur: Desa Tasikrejo</li>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold mb-3 text-teal-800">Batas Wilayah</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li class="flex items-center"><i data-lucide="arrow-up" class="w-4 h-4 mr-2 text-teal-500"></i><strong class="w-20">Utara:</strong> Laut Jawa</li>
+                        <li class="flex items-center"><i data-lucide="arrow-down" class="w-4 h-4 mr-2 text-teal-500"></i><strong class="w-20">Selatan:</strong> Desa Wiyorowetan & Bumirejo</li>
+                        <li class="flex items-center"><i data-lucide="arrow-left" class="w-4 h-4 mr-2 text-teal-500"></i><strong class="w-20">Barat:</strong> Desa Kertosari</li>
+                        <li class="flex items-center"><i data-lucide="arrow-right" class="w-4 h-4 mr-2 text-teal-500"></i><strong class="w-20">Timur:</strong> Desa Tasikrejo</li>
                     </ul>
-                    <p class="text-gray-700 leading-relaxed">
-                        Desa Kaliprau tergolong sebagai wilayah pesisir yang memiliki akses langsung terhadap berbagai ekosistem: pantai (pasir atau berbatu), mangrove, estuaria, serta ekosistem terumbu karang. Umumnya setiap wilayah yang ada di dalam Desa Kaliprau memiliki ketinggian yang bervariasi yaitu antara 0-1.000 m di atas permukaan laut, karena berada di jalur pesisir pantai utara.
-                    </p>
                 </div>
             </div>
         </div>
     </div>
+
     <div id="rt-rw-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden modal-overlay p-4">
-        <div class="bg-white rounded-lg shadow-xl p-8 relative modal-content w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
-            <button onclick="closeModal('rt-rw-modal')" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900">
-                <i data-lucide="x" class="h-6 w-6"></i>
-            </button>
+        <div class="bg-gray-50 rounded-lg shadow-xl overflow-hidden relative modal-content w-full max-w-lg">
+             <div class="bg-teal-800 text-white p-4 flex justify-between items-center">
+                <h2 class="text-xl font-bold flex items-center"><i data-lucide="home" class="mr-2"></i>Struktur RT & RW</h2>
+                <button onclick="closeModal('rt-rw-modal')" class="text-white hover:bg-teal-700 rounded-full p-1">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
             <div class="p-6">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 text-f28500">Jumlah RT & RW Desa Kaliprau</h2>
-                <div class="gradient-blue-dark text-white rounded-lg p-6 mb-8 shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4">Rincian RT & RW per Dusun</h3>
-                    <ul class="list-none space-y-3 text-lg">
-                        <li class="flex justify-between items-center"><span>Dusun 1:</span><span class="font-bold">8 RT, 2 RW</span></li>
-                        <li class="flex justify-between items-center"><span>Dusun 2:</span><span class="font-bold">9 RT, 2 RW</span></li>
-                        <li class="flex justify-between items-center"><span>Dusun 3:</span><span class="font-bold">8 RT, 2 RW</span></li>
-                        <li class="flex justify-between items-center"><span>Dusun 4:</span><span class="font-bold">8 RT, 2 RW</span></li>
-                    </ul>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-semibold mb-4 text-65b741">Pentingnya RT dan RW:</h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Rukun Tetangga (RT) dan Rukun Warga (RW) adalah lembaga kemasyarakatan yang dibentuk untuk membantu pelayanan pemerintahan desa kepada masyarakat, serta menjadi wadah partisipasi masyarakat dalam pembangunan. Mereka berperan penting dalam menjaga kerukunan dan ketertiban lingkungan.
-                    </p>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold mb-4 text-teal-800 text-center">Rincian per Dusun</h3>
+                    <div class="divide-y divide-gray-200">
+                        <div class="flex justify-between items-center py-3">
+                            <span class="text-gray-600">Dusun 1</span>
+                            <span class="font-bold text-teal-800">8 RT / 2 RW</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3">
+                            <span class="text-gray-600">Dusun 2</span>
+                            <span class="font-bold text-teal-800">9 RT / 2 RW</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3">
+                            <span class="text-gray-600">Dusun 3</span>
+                            <span class="font-bold text-teal-800">8 RT / 2 RW</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3">
+                            <span class="text-gray-600">Dusun 4</span>
+                            <span class="font-bold text-teal-800">8 RT / 2 RW</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
