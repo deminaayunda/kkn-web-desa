@@ -24,42 +24,38 @@
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
-            background-color: #FDFDFD; /* Consistent background color */
-            color: #3C3C3C; /* Consistent text color */
+            background-color: #FDFDFD;
+            color: #3C3C3C;
         }
-        /* Orange color from your theme */
-        .text-f28500 { color: #F28500; }
-        /* Green color from your theme */
-        .text-65b741 { color: #65B741; }
+        /* Theme Colors */
+        .text-amber-theme { color: #f59e0b; } /* amber-500 for hover effects */
+        .bg-teal-theme { background-color: #115e59; } /* teal-800 */
 
-        /* Custom styles for demography charts to match theme */
         .main-content-demografi {
-            padding-top: 0; /* No need for extra padding if using a full-width hero */
+            padding-top: 0;
             width: 100%;
-            padding: 0; /* Remove padding here, add it to inner containers */
+            padding: 0;
             box-sizing: border-box;
-            -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* Styles for the single main content card */
         .demografi-main-card {
-            background-color: #ffffff; /* bg-white */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* shadow-lg */
-            padding: 1.5rem; /* p-6 */
-            max-width: 1400px; /* Max width for the main card - widened */
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            max-width: 1400px;
             margin-left: auto;
             margin-right: auto;
-            margin-top: -80px; /* Pulls the card up over the banner */
-            position: relative; /* For z-index */
-            z-index: 20; /* Ensure it's above the banner */
+            margin-top: -80px;
+            position: relative;
+            z-index: 20;
         }
 
-        /* Container for charts inside the main card */
         .charts-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Single column by default */
-            gap: 40px; /* Increased gap between charts */
+            grid-template-columns: 1fr;
+            gap: 40px;
             padding-top: 20px;
         }
 
@@ -72,32 +68,31 @@
         
         .chart-section h2 {
             margin-bottom: 20px;
-            color: #F28500; /* Primary orange from your theme */
-            font-size: 1.8em; /* Larger font size for titles */
-            font-weight: 700; /* Bolder font weight */
+            color: #115e59; /* UPDATED: Titles are teal-800 */
+            font-size: 1.8em;
+            font-weight: 700;
         }
 
         .chart-container-canvas {
             position: relative;
-            width: 100%; /* Take full width of its parent */
-            max-width: 450px; /* Max width for individual chart canvas */
-            height: 350px; /* Fixed height for consistency */
+            width: 100%;
+            max-width: 450px;
+            height: 350px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Toggle Button for Jobs Legend */
         .toggle-legend-btn {
-            background-color: #65B741; /* Green from your theme */
-            color: #ffffff; /* White text */
+            background-color: #65B741; /* Reverted to green */
+            color: #ffffff;
             border: none;
             padding: 8px 15px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
             margin-top: 15px;
-            display: block; /* Ensure it's a block element for margin auto */
+            display: block;
             margin-left: auto;
             margin-right: auto;
         }
@@ -109,78 +104,84 @@
             overflow-y: auto;
             margin-top: 15px;
             padding-right: 10px;
-            display: none; /* Initially hidden */
+            display: none;
             font-size: 0.9em;
-            color: #3C3C3C; /* Consistent text color */
+            color: #3C3C3C;
             width: 100%;
-            max-width: 450px; /* Match chart width */
+            max-width: 450px;
             margin-left: auto;
             margin-right: auto;
-            text-align: left; /* Align legend text to left */
+            text-align: left;
         }
 
-        /* Responsive Design for charts grid */
-        @media (min-width: 768px) { /* On medium screens and up */
+        @media (min-width: 768px) {
             .charts-grid {
-                grid-template-columns: 1fr 1fr; /* Two columns */
+                grid-template-columns: 1fr 1fr;
             }
         }
         @media (max-width: 767px) {
             .demografi-main-card {
-                padding: 1rem; /* Smaller padding on small screens */
+                padding: 1rem;
             }
             .chart-section h2 {
-                font-size: 1.5em; /* Smaller title on mobile */
+                font-size: 1.5em;
             }
             .chart-container-canvas {
-                height: 300px; /* Slightly smaller height for mobile charts */
+                height: 300px;
             }
         }
-        /* Added padding for larger screens */
         @media (min-width: 1024px) {
             .demografi-main-card {
-                padding: 2rem; /* p-8 */
+                padding: 2rem;
             }
         }
     </style>
 </head>
 <body class="bg-[#FDFDFD] text-[#3C3C3C]">
 
-    <!-- Header / Navigation (Copied from index.html) -->
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto px-6 py-3">
+    <!-- Header / Navigasi -->
+    <header class="fixed top-0 left-0 right-0 z-50 p-4">
+        <div class="container mx-auto px-6 py-3 bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg">
             <div class="flex items-center justify-between">
-                <!-- Logo -->
+            
                 <a href="index.html" class="flex items-center space-x-2">
                     <img src="images/logo_kaliprau.png" onerror="this.onerror=null; this.src='https://placehold.co/100x40/65B741/ffffff?text=Logo';" alt="Logo Desa Kaliprau" class="h-10">
                 </a>
                 
-                <!-- Desktop Navigation Menu -->
                 <nav class="hidden lg:flex items-center space-x-5">
-                    <a href="index.html#profil" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Profil Desa</a>
-                    <a href="index.html#pemerintahan" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Pemerintahan</a>
-                    <a href="index.html#potensi-produk" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Potensi & Produk</a>
-                    <a href="index.html#edukasi" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Edukasi</a>
-                    <a href="index.html#stunting" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Stunting</a>
+                    <a href="#profil-desa" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Profil Desa</a>
+                    <a href="#pemerintahan" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Pemerintahan</a>
+                    <a href="#potensi-desa" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Potensi</a>
+                    <a href="#produk-desa" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Produk</a>
+                    <a href="#edukasi" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Edukasi</a>
+                    <a href="#stunting" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300">Stunting</a>
                     <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-[#3C3C3C] hover:text-[#F28500] transition-colors duration-300 flex items-center">
                         Berita Kaliprau <i data-lucide="arrow-up-right" class="h-4 w-4 ml-1"></i>
                     </a>
                 </nav>
-
-                <!-- Mobile Menu Button -->
+                <!-- Tombol Menu Mobile -->
                 <button id="mobile-menu-button" class="lg:hidden text-[#3C3C3C]" aria-label="Toggle mobile menu">
                     <i data-lucide="menu" class="h-7 w-7"></i>
                 </button>
             </div>
-        </div>
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4 border-t border-gray-200">
-            <a href="index.html#profil" class="block py-2 text-gray-700 hover:text-[#F28500]">Profil Desa</a>
-            <a href="index.html#pemerintahan" class="block py-2 text-gray-700 hover:text-[#F28500]">Pemerintahan</a>
-            <a href="index.html#potensi-produk" class="block py-2 text-gray-700 hover:text-[#F28500]">Potensi & Produk</a>
-            <a href="index.html#edukasi" class="block py-2 text-gray-700 hover:text-[#F28500]">Edukasi</a>
-            <a href="index.html#stunting" class="block py-2 text-gray-700 hover:text-[#F28500]">Stunting</a>
-            <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="block py-2 text-gray-700 hover:text-[#F28500]">Berita Kaliprau</a>
+            <!-- Menu Mobile Dropdown -->
+            <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-gray-200/50">
+                <nav class="flex flex-col space-y-2">
+                    <a href="#profil-desa" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Profil Desa</a>
+                    <a href="#pemerintahan" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Pemerintahan</a>
+                    <a href="#potensi-desa" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Potensi</a>
+                    <a href="#produk-desa" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Produk</a>
+                    <a href="#edukasi" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Edukasi</a>
+                    <a href="#stunting" class="mobile-link text-gray-700 hover:text-[#F28500] p-2 rounded-md">Stunting</a>
+                    <a href="https://bumikaliprau.blogspot.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mobile-link flex items-center gap-x-1 text-gray-700 hover:text-[#F28500] p-2 rounded-md">
+                    Berita Kaliprau
+                    <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                    </a>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -199,13 +200,13 @@
             <div class="container mx-auto px-6">
                 <div class="demografi-main-card">
                     <!-- Back Button -->
-                    <a href="index.html#pemerintahan" class="inline-flex items-center gap-2 text-gray-600 hover:text-f28500 transition-colors font-semibold mb-8">
+                    <a href="index.html#pemerintahan" class="inline-flex items-center gap-2 text-gray-600 hover:text-amber-theme transition-colors font-semibold mb-8">
                         <i data-lucide="arrow-left" class="h-5 w-5"></i>
                         <span>Kembali</span>
                     </a>
 
                     <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-f28500">Dashboard Data Penduduk Kaliprau</h2>
+                        <h2 class="text-3xl md:text-4xl font-bold text-teal-800">Dashboard Data Penduduk Kaliprau</h2>
                         <p class="text-lg text-[#3C3C3C] mt-2 max-w-3xl mx-auto">
                             Visualisasi data demografi Desa Kaliprau untuk memberikan gambaran lengkap tentang komposisi penduduk, status perkawinan, jenis pekerjaan, dan piramida penduduk.
                         </p>
@@ -247,33 +248,37 @@
         </section>
     </main>
 
-    <!-- Footer (Copied from index.html) -->
-    <footer id="kontak" class="bg-[#3C3C3C] text-white">
+    </footer> -->
+    <footer id="kontak" class="bg-teal-800 text-white">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
-                    <h3 class="text-xl font-bold mb-4 text-[#F28500]">Desa Kaliprau</h3>
+                    <h3 class="text-xl font-bold mb-4">Desa Kaliprau</h3>
                     <p class="text-gray-300">Jasmine Village<br>Kecamatan Ulujami, Kabupaten Pemalang<br>Jawa Tengah</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold mb-4 text-[#F28500]">Tautan Penting</h3>
+                    <h3 class="text-xl font-bold mb-4">Tautan Penting</h3>
                     <ul class="space-y-2">
-                        <li><a href="index.html#profil" class="text-gray-300 hover:text-white">Profil Desa</a></li>
-                        <li><a href="index.html#pemerintahan" class="text-gray-300 hover:text-white">Pemerintahan</a></li>
-                        <li><a href="index.html#potensi-produk" class="text-gray-300 hover:text-white">Potensi & Produk</a></li>
+                        <li><a href="#profil" class="text-gray-300 hover:text-white">Profil Desa</a></li>
+                        <li><a href="#pemerintahan" class="text-gray-300 hover:text-white">Pemerintahan</a></li>
+                        <li><a href="#potensi-desa" class="text-gray-300 hover:text-white">Potensi</a></li>
+                        <li><a href="#produk-desa" class="text-gray-300 hover:text-white">Produk</a></li>
+                        <li><a href="#edukasi" class="text-gray-300 hover:text-white">Edukasi</a></li>
+                        <li><a href="#stunting" class="text-gray-300 hover:text-white">Stunting</a></li>
                     </ul>
                 </div>
+                
                 <div>
-                    <h3 class="text-xl font-bold mb-4 text-[#F28500]">Ikuti Kami</h3>
+                    <h3 class="text-xl font-bold mb-4">Ikuti Kami</h3>
                     <div class="flex justify-center md:justify-start space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-white"><i data-lucide="instagram" class="h-6 w-6"></i></a>
+                       
                         <a href="https://www.facebook.com/desakaliprau/?locale=id_ID" target="_blank" class="text-gray-300 hover:text-white"><i data-lucide="facebook" class="h-6 w-6"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white"><i data-lucide="youtube" class="h-6 w-6"></i></a>
+                        
                     </div>
                 </div>
             </div>
-            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Desa Kaliprau. Didukung oleh Tim KKN Undip.</p>
+            <div class="mt-12 border-t border-teal-700 pt-8 text-center text-gray-400">
+                <p>Dibuat oleh Tim KKN-T 160 Universitas Diponegoro 2025 untuk Desa Kaliprau</p>
             </div>
         </div>
     </footer>
@@ -300,16 +305,15 @@
                 male: [-23, -344, -380, -344, -352, -369, -404, -378, -374, -314, -255, -236, -177, -149, -138, -192],
                 female: [8, 329, 348, 335, 357, 353, 374, 349, 356, 315, 250, 223, 186, 178, 135, 196]
             };
+            
+            // REVERTED: Original color palette for diagrams
             const colorPalette = {
                 primaryOrange: '#F28500',
                 primaryGreen: '#65B741',
                 darkText: '#3C3C3C',
-                lightBg: '#FDFDFD',
                 cardBg: '#ffffff',
                 chartBlue: '#4682B4',
-                chartLightGreen: '#50A888',
-                chartGold: '#FFD700',
-                chartLightBlue: '#A0C4E4'
+                chartLightGreen: '#50A888'
             };
 
             // Utility function for percentages in tooltips
@@ -331,7 +335,7 @@
                         labels: ['Laki-laki', 'Perempuan'],
                         datasets: [{
                             data: Object.values(genderData),
-                            backgroundColor: [colorPalette.primaryOrange, colorPalette.primaryGreen], /* Changed to logo colors */
+                            backgroundColor: [colorPalette.primaryOrange, colorPalette.primaryGreen], // REVERTED
                             borderColor: colorPalette.cardBg,
                             borderWidth: 3,
                         }]
@@ -372,7 +376,7 @@
                         labels: Object.keys(maritalStatusData),
                         datasets: [{
                             data: Object.values(maritalStatusData),
-                            backgroundColor: [colorPalette.primaryGreen, colorPalette.primaryOrange, colorPalette.chartBlue, colorPalette.chartLightGreen],
+                            backgroundColor: [colorPalette.primaryGreen, colorPalette.primaryOrange, colorPalette.chartBlue, colorPalette.chartLightGreen], // REVERTED
                             borderColor: colorPalette.cardBg,
                             borderWidth: 3,
                         }]
@@ -424,7 +428,7 @@
                         maintainAspectRatio: false,
                         plugins: {
                             legend: {
-                                display: false // Hide default legend
+                                display: false 
                             },
                             tooltip: {
                                 callbacks: {
@@ -467,21 +471,21 @@
                             {
                                 label: 'Laki-laki',
                                 data: populationPyramidData.male,
-                                backgroundColor: colorPalette.primaryOrange, /* Changed to logo colors */
-                                borderColor: colorPalette.primaryOrange, /* Changed to logo colors */
+                                backgroundColor: colorPalette.primaryOrange, // REVERTED
+                                borderColor: colorPalette.primaryOrange, // REVERTED
                                 borderWidth: 1,
                             },
                             {
                                 label: 'Perempuan',
                                 data: populationPyramidData.female,
-                                backgroundColor: colorPalette.primaryGreen, /* Changed to logo colors */
-                                borderColor: colorPalette.primaryGreen, /* Changed to logo colors */
+                                backgroundColor: colorPalette.primaryGreen, // REVERTED
+                                borderColor: colorPalette.primaryGreen, // REVERTED
                                 borderWidth: 1,
                             }
                         ]
                     },
                     options: {
-                        indexAxis: 'y', // Horizontal bars
+                        indexAxis: 'y', 
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
@@ -489,31 +493,31 @@
                                 stacked: true,
                                 ticks: {
                                     callback: function(value) {
-                                        return Math.abs(value); // Show positive numbers on axis
+                                        return Math.abs(value);
                                     },
-                                    color: colorPalette.darkText // Axis text color
+                                    color: colorPalette.darkText
                                 },
                                 title: {
                                     display: true,
                                     text: 'Jumlah Penduduk',
-                                    color: colorPalette.darkText // Axis title color
+                                    color: colorPalette.darkText
                                 },
                                 grid: {
-                                    color: '#e5e7eb' // Light gray grid lines
+                                    color: '#e5e7eb'
                                 }
                             },
                             y: {
                                 stacked: true,
                                 ticks: {
-                                    color: colorPalette.darkText // Axis text color
+                                    color: colorPalette.darkText
                                 },
                                 title: {
                                     display: true,
                                     text: 'Kelompok Usia',
-                                    color: colorPalette.darkText // Axis title color
+                                    color: colorPalette.darkText
                                 },
                                 grid: {
-                                    color: '#e5e7eb' // Light gray grid lines
+                                    color: '#e5e7eb'
                                 }
                             }
                         },
@@ -528,7 +532,7 @@
                             },
                             legend: {
                                 position: 'bottom',
-                                labels: { font: { size: 14 }, color: colorPalette.darkText } // Legend text color
+                                labels: { font: { size: 14 }, color: colorPalette.darkText }
                             }
                         }
                     }
