@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desa Kaliprau - Jasmine Village</title>
+    <link rel="icon" type="image/png" href="images/logo_kaliprau.png">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -70,8 +71,32 @@
                 
                 <nav class="hidden lg:flex items-center space-x-5">
                     <a href="index.html#profil-desa" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Profil Desa</a>
-                    <a href="index.html#pemerintahan" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Pemerintahan</a>
-                    <a href="index.html#potensi-desa" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Potensi</a>
+                    
+                    <!-- Pemerintahan Dropdown -->
+                    <div class="relative group">
+                        <button class="text-sm text-[#3C3C3C] hover:text-teal-500 transition-colors duration-300 flex items-center">
+                            Pemerintahan
+                            <i data-lucide="chevron-down" class="h-4 w-4 ml-1 transition-transform duration-200 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 py-2 w-48 z-10">
+                            <a href="sotk.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Struktur Organisasi</a>
+                            <a href="keuangan_desa.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Keuangan Desa</a>
+                            <a href="data_aset.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Data Aset Desa</a>
+                        </div>
+                    </div>
+
+                    <!-- Potensi Dropdown -->
+                    <div class="relative group">
+                        <button class="text-sm text-[#3C3C3C] hover:text-teal-500 transition-colors duration-300 flex items-center">
+                            Potensi
+                            <i data-lucide="chevron-down" class="h-4 w-4 ml-1 transition-transform duration-200 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 py-2 w-56 z-10">
+                            <a href="potensiSDA.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Alam dan Kehidupan Kaliprau</a>
+                            <a href="potensiBudaya.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Jejak Budaya</a>
+                        </div>
+                    </div>
+
                     <a href="index.html#produk-desa" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Produk</a>
                     <a href="index.html#edukasi" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Edukasi</a>
                     <a href="index.html#stunting" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Stunting</a>
@@ -86,21 +111,41 @@
             </div>
             <!-- Menu Mobile Dropdown -->
             <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-gray-200/50">
-                <nav class="flex flex-col space-y-2">
-                    <a href="index.html#profil-desa" class="mobile-link text-gray-700 hover:text-teal-500 hover:underline p-2 rounded-md">Profil Desa</a>
-                    <a href="index.html#pemerintahan" class="mobile-link text-gray-700 hover:text-teal-500 hover:underline p-2 rounded-md">Pemerintahan</a>
-                    <a href="index.html#potensi-desa" class="mobile-link text-gray-700 hover:text-teal-500 hover:underline p-2 rounded-md">Potensi</a>
-                    <a href="index.html#produk-desa" class="mobile-link text-gray-700 hover:text-teal-500 hover:underline p-2 rounded-md">Produk</a>
-                    <a href="index.html#edukasi" class="mobile-link text-gray-700 hover:text-teal-500 p-2 hover:underline rounded-md">Edukasi</a>
-                    <a href="index.html#stunting" class="mobile-link text-gray-700 hover:text-teal-500 p-2 hover:underline rounded-md">Stunting</a>
-                    <a href="https://bumikaliprau.blogspot.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="mobile-link flex items-center gap-x-1 text-gray-700 hover:text-teal-500 p-2 rounded-md">
-                    Berita Kaliprau
-                    <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
-                    </a>
+                <nav class="flex flex-col space-y-1">
+                    <a href="index.html#profil-desa" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Profil Desa</a>
+                    
+                    <!-- Mobile Pemerintahan Dropdown -->
+                    <div>
+                        <button class="mobile-dropdown-toggle w-full flex justify-between items-center text-gray-800 p-2 rounded-md hover:bg-teal-200">
+                            <span>Pemerintahan</span>
+                            <i data-lucide="chevron-down" class="h-5 w-5 transition-transform duration-200"></i>
+                        </button>
+                        <div class="pl-4 flex-col hidden">
+                            <a href="sotk.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Struktur Organisasi</a>
+                            <a href="keuangan_desa.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Keuangan Desa</a>
+                            <a href="data_aset.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Data Aset Desa</a>
+                        </div>
+                    </div>
 
+                    <!-- Mobile Potensi Dropdown -->
+                    <div>
+                        <button class="mobile-dropdown-toggle w-full flex justify-between items-center text-gray-800 p-2 rounded-md hover:bg-teal-200">
+                            <span>Potensi</span>
+                            <i data-lucide="chevron-down" class="h-5 w-5 transition-transform duration-200"></i>
+                        </button>
+                        <div class="pl-4 flex-col hidden">
+                            <a href="potensiSDA.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Alam dan Kehidupan Kaliprau</a>
+                            <a href="potensiBudaya.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Jejak Budaya</a>
+                        </div>
+                    </div>
+
+                    <a href="index.html#produk-desa" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Produk</a>
+                    <a href="index.html#edukasi" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Edukasi</a>
+                    <a href="index.html#stunting" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Stunting</a>
+                    <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="mobile-link flex items-center gap-x-1 text-gray-700 hover:bg-teal-200 p-2 rounded-md">
+                        Berita Kaliprau
+                        <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                    </a>
                 </nav>
             </div>
         </div>
@@ -157,11 +202,14 @@
         <div class="container mx-auto px-6">
             <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 md:p-10 space-y-8 max-w-4xl mx-auto">
                 
-                <a href="index.html#edukasi" class="inline-flex items-center gap-2 text-gray-600 hover:text-f28500 transition-colors">
+                <!-- <a href="index.html#edukasi" class="inline-flex items-center gap-2 text-gray-600 hover:text-f28500 transition-colors">
                     <i data-lucide="arrow-left" class="h-5 w-5"></i>
                     <span>Kembali</span>
+                </a> -->
+                <a href="index.html#edukasi" class="group inline-flex items-center gap-2 text-black hover:text-teal-500 hover:underline transition-colors duration-300">
+                    <i data-lucide="arrow-left" class="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1"></i>
+                    <span>Kembali</span>
                 </a>
-
                 <div class="text-center">
                     <h1 class="text-3xl md:text-4xl font-bold text-teal-700">Edukasi Bahaya Kenakalan Remaja</h1>
                     <p class="text-lg text-gray-500 mt-2">Tingkatkan kesadaran akan bahayanya kenakalan remaja.</p>
@@ -252,12 +300,40 @@
         });
 
         // Fungsionalitas untuk Menu Mobile
+       
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        if (mobileMenuButton && mobileMenu) {
+            const toggleMenu = () => {
+                mobileMenu.classList.toggle('hidden');
+            };
+
+            mobileMenuButton.addEventListener('click', toggleMenu);
+            
+            // Close menu when clicking mobile links
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                        }, 150); // A short delay can improve user experience 
+                    }
+                });
+            });
+            mobileDropdownToggles.forEach(button => {
+                button.addEventListener('click', () => {
+                    const dropdownContent = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    dropdownContent.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+        }
+
+    
 
         // Fungsionalitas untuk menggulir ke hash saat halaman dimuat (dari halaman lain)
         document.addEventListener('DOMContentLoaded', () => {
@@ -295,8 +371,7 @@
     }
 </script>
  <script>
-        lucide.createIcons();
-
+  
         // --- SCRIPT UNTUK FUNGSI ZOOM ---
         const posterImage = document.getElementById('posterImage');
         const zoomInBtn = document.getElementById('zoomInBtn');
@@ -317,6 +392,7 @@
                 posterImage.style.transform = `scale(${currentScale})`;
             }
         });
+        
     </script>
 
 </body>
