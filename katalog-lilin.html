@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Kaliprau - Jasmine Village</title>
+    <link rel="icon" type="image/png" href="images/logo_kaliprau.png">
+
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
+    <style>
+        /* Menggunakan font Poppins sebagai default */
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Warna oranye dari tema Anda */
+        .text-f28500 { color: #F28500; }
+        /* Warna hijau dari tema Anda */
+        .text-65b741 { color: #65B741; }
+
+        /* Custom styles for the hero Swiper carousel */
+        .home-swiper .swiper-button-next,
+        .home-swiper .swiper-button-prev {
+            color: #FFFFFF;
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            transition: background-color 0.2s;
+        }
+        .home-swiper .swiper-button-next:hover,
+        .home-swiper .swiper-button-prev:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .home-swiper .swiper-button-next::after,
+        .home-swiper .swiper-button-prev::after {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .home-swiper .swiper-pagination-bullet-active {
+            background-color: #FFFFFF;
+        }
+
+        /* Gaya untuk Modal Pop-up */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh; /* Changed to vh for viewport height */
+            overflow-y: auto;
+            z-index: 1001;
+        }
+        /* Gaya tambahan untuk gradasi di pop-up jumlah penduduk */
+        .gradient-green-dark {
+            background: linear-gradient(90deg, #65B741, #50A888); /* Dari hijau utama ke hijau sedikit lebih gelap */
+        }
+        /* Gaya tambahan untuk gradasi di pop-up luas wilayah */
+        .gradient-orange-light {
+            background: linear-gradient(90deg, #F28500, #FFB347); /* Dari oranye utama ke oranye sedikit lebih terang */
+        }
+        /* Gaya tambahan untuk gradasi di pop-up RT/RW */
+        .gradient-blue-dark {
+            background: linear-gradient(90deg, #4682B4, #3A6690); /* Dari biru ke biru sedikit lebih gelap */
+        }
+    </style>
+</head>
+<body class="bg-[#FDFDFD] text-[#1f2937]">
+   <header class="fixed top-0 left-0 right-0 z-50 p-4">
+        <div class="container mx-auto px-6 py-3 bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg">
+            <div class="flex items-center justify-between">
+            
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="images/logo_kaliprau.png" onerror="this.onerror=null; this.src='https://placehold.co/100x40/65B741/ffffff?text=Logo';" alt="Logo Desa Kaliprau" class="h-10">
+                </a>
+                
+                <nav class="hidden lg:flex items-center space-x-5">
+                    <a href="index.html#profil-desa" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Profil Desa</a>
+                    
+                    <!-- Pemerintahan Dropdown -->
+                    <div class="relative group">
+                        <button class="text-sm text-[#3C3C3C] hover:text-teal-500 transition-colors duration-300 flex items-center">
+                            Pemerintahan
+                            <i data-lucide="chevron-down" class="h-4 w-4 ml-1 transition-transform duration-200 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 py-2 w-48 z-10">
+                            <a href="sotk.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Struktur Organisasi</a>
+                            <a href="keuangan_desa.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Keuangan Desa</a>
+                            <a href="data_aset.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Data Aset Desa</a>
+                        </div>
+                    </div>
+
+                    <!-- Potensi Dropdown -->
+                    <div class="relative group">
+                        <button class="text-sm text-[#3C3C3C] hover:text-teal-500 transition-colors duration-300 flex items-center">
+                            Potensi
+                            <i data-lucide="chevron-down" class="h-4 w-4 ml-1 transition-transform duration-200 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 py-2 w-56 z-10">
+                            <a href="potensiSDA.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Alam dan Kehidupan Kaliprau</a>
+                            <a href="potensiBudaya.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Jejak Budaya</a>
+                        </div>
+                    </div>
+
+                    <a href="index.html#produk-desa" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Produk</a>
+                    <a href="index.html#edukasi" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Edukasi</a>
+                    <a href="index.html#stunting" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Stunting</a>
+                    <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300 flex items-center">
+                        Berita Kaliprau <i data-lucide="arrow-up-right" class="h-4 w-4 ml-1"></i>
+                    </a>
+                </nav>
+                <!-- Tombol Menu Mobile -->
+                <button id="mobile-menu-button" class="lg:hidden text-[#3C3C3C]" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="h-7 w-7"></i>
+                </button>
+            </div>
+            <!-- Menu Mobile Dropdown -->
+            <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-gray-200/50">
+                <nav class="flex flex-col space-y-1">
+                    <a href="index.html#profil-desa" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Profil Desa</a>
+                    
+                    <!-- Mobile Pemerintahan Dropdown -->
+                    <div>
+                        <button class="mobile-dropdown-toggle w-full flex justify-between items-center text-gray-800 p-2 rounded-md hover:bg-teal-200">
+                            <span>Pemerintahan</span>
+                            <i data-lucide="chevron-down" class="h-5 w-5 transition-transform duration-200"></i>
+                        </button>
+                        <div class="pl-4 flex-col hidden">
+                            <a href="sotk.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Struktur Organisasi</a>
+                            <a href="keuangan_desa.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Keuangan Desa</a>
+                            <a href="data_aset.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Data Aset Desa</a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Potensi Dropdown -->
+                    <div>
+                        <button class="mobile-dropdown-toggle w-full flex justify-between items-center text-gray-800 p-2 rounded-md hover:bg-teal-200">
+                            <span>Potensi</span>
+                            <i data-lucide="chevron-down" class="h-5 w-5 transition-transform duration-200"></i>
+                        </button>
+                        <div class="pl-4 flex-col hidden">
+                            <a href="potensiSDA.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Alam dan Kehidupan Kaliprau</a>
+                            <a href="potensiBudaya.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Jejak Budaya</a>
+                        </div>
+                    </div>
+
+                    <a href="index.html#produk-desa" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Produk</a>
+                    <a href="index.html#edukasi" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Edukasi</a>
+                    <a href="index.html#stunting" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Stunting</a>
+                    <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="mobile-link flex items-center gap-x-1 text-gray-700 hover:bg-teal-200 p-2 rounded-md">
+                        Berita Kaliprau
+                        <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+  <main class="container mx-auto px-4 py-10 mt-20">
+    <a href="index.html#pemerintahan" class="group inline-flex items-center gap-2 text-black hover:text-teal-500 hover:underline transition-colors duration-300">
+        <i data-lucide="arrow-left" class="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1"></i>
+        <span>Kembali</span>
+    </a>
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-2">
+      <!-- Kolom Kiri: Galeri + Varian di bawah gambar -->
+      <section aria-labelledby="galeri-produk" class="space-y-5">
+        <h2 id="galeri-produk" class="sr-only">Galeri Produk</h2>
+        
+        <!-- Galeri -->
+        <div class="swiper product-swiper rounded-2xl shadow-lg ring-1 ring-black/5 overflow-hidden">
+          <div class="swiper-wrapper">
+            <!-- 7 slide = 7 varian. Ganti src dengan foto asli per varian -->
+            <div class="swiper-slide"><img src="https://placehold.co/900x900/f1c40f/ffffff?text=Melati+Klasik" alt="Marlene Candle - Melati Klasik" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="https://placehold.co/900x900/16a34a/ffffff?text=Melati+%26+Teh+Hijau" alt="Marlene Candle - Melati & Teh Hijau" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="https://placehold.co/900x900/7e22ce/ffffff?text=Melati+%26+Lavender" alt="Marlene Candle - Melati & Lavender" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="https://placehold.co/900x900/f59e0b/ffffff?text=Melati+%26+Vanila" alt="Marlene Candle - Melati & Vanila" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="https://placehold.co/900x900/f97316/ffffff?text=Melati+%26+Citrus" alt="Marlene Candle - Melati & Citrus" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="https://placehold.co/900x900/78350f/ffffff?text=Melati+%26+Sandalwood" alt="Marlene Candle - Melati & Sandalwood" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="https://placehold.co/900x900/0369a1/ffffff?text=Melati+%26+Ocean+Breeze" alt="Marlene Candle - Melati & Ocean Breeze" class="w-full h-full object-cover" loading="lazy"></div>
+          </div>
+          <div class="swiper-button-next" aria-label="Gambar selanjutnya"></div>
+          <div class="swiper-button-prev" aria-label="Gambar sebelumnya"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- Varian di bawah gambar (sinkron dengan galeri) -->
+        <div id="varian" class="space-y-2">
+          <h3 class="text-sm font-semibold text-gray-700">Pilih Varian Aroma</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="variantList">
+            <!-- Button varian di-generate lewat JS agar rapi dan mudah diubah -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Kolom Kanan: Detail Produk -->
+      <section aria-labelledby="detail-produk" class="space-y-6">
+        <header>
+          <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-teal-700 md:mt-4">Marlene Candle</h1>
+          <p class="text-base md:text-lg text-gray-600 mt-1">Lilin Aromaterapi dari Ekstrak Melati Asli</p>
+        </header>
+
+        <div class="flex items-end gap-3">
+          <p class="text-3xl md:text-4xl font-bold">Rp 25.000</p>
+          <span class="text-sm text-gray-500">/ buah</span>
+        </div>
+
+        <div id="deskripsi" class="prose prose-sm md:prose-base max-w-none">
+          <h2 class="text-lg font-semibold not-prose">Deskripsi Produk</h2>
+          <p>Marlene Candle adalah lilin aromaterapi handmade dari pengrajin Desa Kaliprau. Menggunakan ekstrak melati asli dari kebun lokal, memberikan aroma menenangkan dan mewah. Cocok untuk relaksasi, dekorasi ruangan, atau hadiah. Dibuat dari bahan ramah lingkungan dengan pembakaran bersih.</p>
+          <ul>
+            <li>Soy wax & sumbu katun</li>
+            <li>Aroma lembut, tidak menyengat</li>
+            <li>Kemasan aman untuk pengiriman</li>
+          </ul>
+        </div>
+
+        <div id="aksi" class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+          <a href="https://drive.google.com/file/d/1Xa8AfntIPO504Hfo28cN74YWBmVC8RCF/view?usp=sharing" class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-md transition">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="book-open" class="h-8 w-8 text-gray-700"></i>
+              <span class="mt-2 text-sm font-semibold">Modul Marketing</span>
+              <span class="text-xs text-gray-500">Penjualan dan Promosi</span>
+            </div>
+          </a>
+          <a href="https://heyzine.com/flip-book/2a2971f6d0.html" class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-md transition">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="book-open-text" class="h-8 w-8 text-gray-700"></i>
+              <span class="mt-2 text-sm font-semibold">Digital Flipbook</span>
+              <span class="text-xs text-gray-500">Kisah Dibalik Kaliprau</span>
+            </div>
+          </a>
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="group p-4 rounded-2xl bg-[#65B741] text-white shadow hover:bg-opacity-90 transition">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="message-circle" class="h-8 w-8"></i>
+              <span class="mt-2 text-sm font-semibold">Hubungi Penjual</span>
+              <span class="text-xs opacity-90">Pesan via WhatsApp</span>
+            </div>
+          </a>
+          <a href="#" target="_blank" rel="noopener" class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-md transition">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="instagram" class="h-8 w-8 text-gray-700"></i>
+              <span class="mt-2 text-sm font-semibold">Sosial Media</span>
+              <span class="text-xs text-gray-500">@marlenecandle</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="rounded-2xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-900">
+          <p class="font-semibold">Catatan:</p>
+          <p>Bisa request label ucapan & kemasan hadiah. Tanyakan ke penjual sebelum checkout.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- <footer class="mt-16 border-t">
+    <div class="container mx-auto px-4 py-10 text-sm text-gray-600">
+      <p>© <span id="year"></span> Desa Kaliprau. Dibuat dengan ♥ untuk UMKM lokal.</p>
+    </div>
+  </footer> -->
+  <footer id="kontak" class="bg-teal-800 text-white">
+  <div class="container mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      <div>
+        <h3 class="text-xl font-bold mb-4">Desa Kaliprau</h3>
+        <p class="text-gray-300">Jasmine Village<br>Kecamatan Ulujami, Kabupaten Pemalang<br>Jawa Tengah</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-4">Tautan Penting</h3>
+        <ul class="space-y-2">
+          <li><a href="#profil" class="text-gray-300 hover:text-white">Profil Desa</a></li>
+          <li><a href="#pemerintahan" class="text-gray-300 hover:text-white">Pemerintahan</a></li>
+          <li><a href="#potensi-desa" class="text-gray-300 hover:text-white">Potensi</a></li>
+          <li><a href="#produk-desa" class="text-gray-300 hover:text-white">Produk</a></li>
+          <li><a href="#edukasi" class="text-gray-300 hover:text-white">Edukasi</a></li>
+          <li><a href="#stunting" class="text-gray-300 hover:text-white">Stunting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-4">Ikuti Kami</h3>
+        <div class="flex justify-center md:justify-start space-x-4">
+          <a href="https://www.facebook.com/desakaliprau/?locale=id_ID" target="_blank" class="text-gray-300 hover:text-white"><i data-lucide="facebook" class="h-6 w-6"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 border-t border-teal-700 pt-8 text-center text-gray-400">
+      <p>© <span id="year"></span> Desa Kaliprau — Dibuat oleh Tim KKN-T 160 Universitas Diponegoro 2025</p>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    // Tahun dinamis & ikon
+    document.getElementById('year').textContent = new Date().getFullYear();
+    lucide.createIcons();
+
+    // Data varian (7 varian)
+    const variants = [
+      { name: 'Melati' },
+      { name: 'Teh Hijau' },
+      { name: 'Lavender' },
+      { name: 'Vanila' },
+      { name: 'Citrus' },
+      { name: 'Sandalwood' },
+      { name: 'Ocean Breeze' },
+    ];
+
+    // Render tombol varian di bawah gambar
+    const variantList = document.getElementById('variantList');
+    variants.forEach((v, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'variant-btn w-full text-center px-3 py-2 rounded-xl border bg-white shadow-sm hover:bg-teal-200 transition text-sm focus:outline-none';
+      btn.setAttribute('data-index', idx);
+      btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+      btn.innerHTML = `<span class="font-medium">${v.name}</span>`;
+      variantList.appendChild(btn);
+    });
+
+    // Inisialisasi Swiper (pakai loop true agar autoplay halus), pakai slideToLoop saat memilih varian
+    const productSwiper = new Swiper('.product-swiper', {
+      loop: true,
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      keyboard: { enabled: true },
+      on: {
+        slideChange(sw) {
+          // sinkronkan state active pada tombol varian
+          const real = sw.realIndex; // index varian 0..6
+          document.querySelectorAll('.variant-btn').forEach((b, i) => b.setAttribute('aria-selected', i === real ? 'true' : 'false'));
+        }
+      }
+    });
+
+    // Klik varian => pindah slide ke varian tersebut
+    variantList.addEventListener('click', (e) => {
+      const btn = e.target.closest('.variant-btn');
+      if (!btn) return;
+      const idx = Number(btn.getAttribute('data-index'));
+      productSwiper.slideToLoop(idx, 500); // 500ms animasi
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // === MOBILE MENU FUNCTIONALITY ===
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+        
+        if (mobileMenuButton && mobileMenu) {
+            const toggleMenu = () => {
+                mobileMenu.classList.toggle('hidden');
+            };
+
+            mobileMenuButton.addEventListener('click', toggleMenu);
+            
+            // Close menu when clicking mobile links
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                        }, 150); // A short delay can improve user experience 
+                    }
+                });
+            });
+            mobileDropdownToggles.forEach(button => {
+                button.addEventListener('click', () => {
+                    const dropdownContent = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    dropdownContent.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+        }
+   });// END DOMContentLoaded // === GLOBAL MODAL FUNCTIONS ===
+    (function(){
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
