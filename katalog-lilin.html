@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -22,9 +23,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    
     <style>
         /* Menggunakan font Poppins sebagai default */
         body {
@@ -36,28 +34,56 @@
         .text-f28500 { color: #F28500; }
         /* Warna hijau dari tema Anda */
         .text-65b741 { color: #65B741; }
+        /* Override warna default Swiper untuk container .product-swiper */
+.product-swiper {
+  /* warna utama dipakai bullet aktif, scrollbar, focus, dll */
+  --swiper-theme-color: #0d9488;              /* teal-600 */
+  /* warna ikon panah (SVG) */
+  --swiper-navigation-color: #ffffff;         /* putih */
+  /* warna bullet aktif (khusus pagination) */
+  --swiper-pagination-color: #0d9488;         /* teal-600 */
+  /* atur bullet nonaktif supaya nggak biru */
+  --swiper-pagination-bullet-inactive-color: rgba(13,148,136,.30);
+  --swiper-pagination-bullet-inactive-opacity: 1;
+}
 
-        /* Custom styles for the hero Swiper carousel */
-        .home-swiper .swiper-button-next,
-        .home-swiper .swiper-button-prev {
-            color: #FFFFFF;
-            background-color: rgba(0, 0, 0, 0.3);
-            width: 40px;
-            height: 40px;
-            border-radius: 9999px;
-            transition: background-color 0.2s;
+/* Background bulat di belakang panah (opsional, biar kontras) */
+.product-swiper .swiper-button-next,
+.product-swiper .swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  
+  color: #fff !important; /* jaga-jaga */
+  transition: background-color .2s;
+}
+
+
+/* Kalau bullet masih ngeyel karena spesifisitas, pakai ini */
+.product-swiper .swiper-pagination-bullet {
+  background: rgba(13,148,136,.30) !important;
+}
+.product-swiper .swiper-pagination-bullet-active {
+  background: #0d9488 !important;
+}
+        /* Tambah selector lebih spesifik dari default Swiper */
+        .swiper.home-swiper .swiper-button-next,
+        .swiper.home-swiper .swiper-button-prev {
+          color: white !important; /* warna ikon panah */
+          background-color: rgba(13, 148, 136, 0.7) !important; /* teal transparan */
         }
-        .home-swiper .swiper-button-next:hover,
-        .home-swiper .swiper-button-prev:hover {
-            background-color: rgba(0, 0, 0, 0.5);
+
+        .swiper.home-swiper .swiper-button-next:hover,
+        .swiper.home-swiper .swiper-button-prev:hover {
+          background-color: rgba(13, 148, 136, 1) !important; /* teal penuh */
         }
-        .home-swiper .swiper-button-next::after,
-        .home-swiper .swiper-button-prev::after {
-            font-size: 1rem;
-            font-weight: bold;
+
+        .swiper.home-swiper .swiper-pagination-bullet {
+          background-color: rgba(255,255,255,0.4) !important; /* bullet default */
         }
-        .home-swiper .swiper-pagination-bullet-active {
-            background-color: #FFFFFF;
+
+        .swiper.home-swiper .swiper-pagination-bullet-active {
+          background-color: #0d9488 !important; /* teal-600 */
         }
 
         /* Gaya untuk Modal Pop-up */
@@ -178,7 +204,7 @@
     </header>
 
   <main class="container mx-auto px-4 py-10 mt-20">
-    <a href="index.html#produk" class="group inline-flex items-center gap-2 text-black hover:text-teal-500 hover:underline transition-colors duration-300">
+    <a href="index.html#produk-desa" class="group inline-flex items-center gap-2 text-black hover:text-teal-500 hover:underline transition-colors duration-300">
         <i data-lucide="arrow-left" class="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1"></i>
         <span>Kembali</span>
     </a>
@@ -232,6 +258,8 @@
           <p class="mt-2 text-justify">Hadirkan ketenangan dan aroma ke dalam ruangan Anda dengan cara yang lebih bermakna. Lilin Aromaterapi MARLENE adalah sebuah inovasi yang tidak hanya memberikan keharuman, tetapi juga mendukung keberlanjutan lingkungan.</p>
           <p class="mt-4 text-justify">Kami bangga mempersembahkan lilin ini sebagai wujud apresiasi terhadap potensi lokal. Dibuat dari minyak jelantah olahan, setiap lilin merupakan pilihan bijak yang membantu mengurangi limbah. Aroma utamanya berasal dari melati khas Desa Kaliprau, sebuah desa yang dikenal dengan kebun melatinya yang subur. Setiap nyala lilin ini menyebarkan keharuman melati yang menenangkan, dipadukan dengan varian-varian pilihan yang siap mengubah suasana hati Anda.</p>
           <p class="mt-4 text-justify">Nikmati relaksasinya. Pilih keharuman favorit Anda dan biarkan lilin kami menjadi simbol keindahan sekaligus kepedulian terhadap bumi dan kekayaan lokal.</p>
+          
+          <p class="mt-4 text-justify font-bold">Varian Lilin Aromaterapi</p>
           <ul class="list-disc list-inside mt-2 space-y-2">
               <li><strong>Lilin Melati</strong> – Aroma melati murni yang menenangkan jiwa, cocok untuk meditasi dan mencari ketenangan.</li>
               <li><strong>Flower Petal</strong> – Aroma melati segar berpadu dengan keharuman kelopak bunga kering, menciptakan suasana ceria dan penuh sukacita.</li>
@@ -415,7 +443,7 @@
       const idx = Number(btn.getAttribute('data-index'));
       productSwiper.slideToLoop(idx, 500); // 500ms animasi
     });
-    
+
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize Lucide Icons
         lucide.createIcons();

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Kaliprau - Jasmine Village</title>
+    <link rel="icon" type="image/png" href="images/logo_kaliprau.png">
+
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Menggunakan font Poppins sebagai default */
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Warna oranye dari tema Anda */
+        .text-f28500 { color: #F28500; }
+        /* Warna hijau dari tema Anda */
+        .text-65b741 { color: #65B741; }
+        /* Override warna default Swiper untuk container .product-swiper */
+.product-swiper {
+  /* warna utama dipakai bullet aktif, scrollbar, focus, dll */
+  --swiper-theme-color: #0d9488;              /* teal-600 */
+  /* warna ikon panah (SVG) */
+  --swiper-navigation-color: #ffffff;         /* putih */
+  /* warna bullet aktif (khusus pagination) */
+  --swiper-pagination-color: #0d9488;         /* teal-600 */
+  /* atur bullet nonaktif supaya nggak biru */
+  --swiper-pagination-bullet-inactive-color: rgba(13,148,136,.30);
+  --swiper-pagination-bullet-inactive-opacity: 1;
+}
+
+/* Background bulat di belakang panah (opsional, biar kontras) */
+.product-swiper .swiper-button-next,
+.product-swiper .swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  
+  color: #fff !important; /* jaga-jaga */
+  transition: background-color .2s;
+}
+
+
+/* Kalau bullet masih ngeyel karena spesifisitas, pakai ini */
+.product-swiper .swiper-pagination-bullet {
+  background: rgba(13,148,136,.30) !important;
+}
+.product-swiper .swiper-pagination-bullet-active {
+  background: #0d9488 !important;
+}
+        /* Tambah selector lebih spesifik dari default Swiper */
+        .swiper.home-swiper .swiper-button-next,
+        .swiper.home-swiper .swiper-button-prev {
+          color: white !important; /* warna ikon panah */
+          background-color: rgba(13, 148, 136, 0.7) !important; /* teal transparan */
+        }
+
+        .swiper.home-swiper .swiper-button-next:hover,
+        .swiper.home-swiper .swiper-button-prev:hover {
+          background-color: rgba(13, 148, 136, 1) !important; /* teal penuh */
+        }
+
+        .swiper.home-swiper .swiper-pagination-bullet {
+          background-color: rgba(255,255,255,0.4) !important; /* bullet default */
+        }
+
+        .swiper.home-swiper .swiper-pagination-bullet-active {
+          background-color: #0d9488 !important; /* teal-600 */
+        }
+
+        /* Gaya untuk Modal Pop-up */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh; /* Changed to vh for viewport height */
+            overflow-y: auto;
+            z-index: 1001;
+        }
+        /* Gaya tambahan untuk gradasi di pop-up jumlah penduduk */
+        .gradient-green-dark {
+            background: linear-gradient(90deg, #65B741, #50A888); /* Dari hijau utama ke hijau sedikit lebih gelap */
+        }
+        /* Gaya tambahan untuk gradasi di pop-up luas wilayah */
+        .gradient-orange-light {
+            background: linear-gradient(90deg, #F28500, #FFB347); /* Dari oranye utama ke oranye sedikit lebih terang */
+        }
+        /* Gaya tambahan untuk gradasi di pop-up RT/RW */
+        .gradient-blue-dark {
+            background: linear-gradient(90deg, #4682B4, #3A6690); /* Dari biru ke biru sedikit lebih gelap */
+        }
+        .variant-thumb { width: 40px; height: 40px; object-fit: cover; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-[#FDFDFD] text-[#1f2937]">
+   <header class="fixed top-0 left-0 right-0 z-50 p-4">
+        <div class="container mx-auto px-6 py-3 bg-white/80 backdrop-blur-lg rounded-2xl shadow-lg">
+            <div class="flex items-center justify-between">
+            
+                <a href="index.html" class="flex items-center space-x-2">
+                    <img src="images/logo_kaliprau.png" onerror="this.onerror=null; this.src='https://placehold.co/100x40/65B741/ffffff?text=Logo';" alt="Logo Desa Kaliprau" class="h-10">
+                </a>
+                
+                <nav class="hidden lg:flex items-center space-x-5">
+                    <a href="index.html#profil-desa" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Profil Desa</a>
+                    
+                    <!-- Pemerintahan Dropdown -->
+                    <div class="relative group">
+                        <button class="text-sm text-[#3C3C3C] hover:text-teal-500 transition-colors duration-300 flex items-center">
+                            Pemerintahan
+                            <i data-lucide="chevron-down" class="h-4 w-4 ml-1 transition-transform duration-200 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 py-2 w-48 z-10">
+                            <a href="sotk.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Struktur Organisasi</a>
+                            <a href="keuangan_desa.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Keuangan Desa</a>
+                            <a href="data_aset.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Data Aset Desa</a>
+                        </div>
+                    </div>
+
+                    <!-- Potensi Dropdown -->
+                    <div class="relative group">
+                        <button class="text-sm text-[#3C3C3C] hover:text-teal-500 transition-colors duration-300 flex items-center">
+                            Potensi
+                            <i data-lucide="chevron-down" class="h-4 w-4 ml-1 transition-transform duration-200 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 py-2 w-56 z-10">
+                            <a href="potensiSDA.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Alam dan Kehidupan Kaliprau</a>
+                            <a href="potensiBudaya.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-200">Jejak Budaya</a>
+                        </div>
+                    </div>
+
+                    <a href="index.html#produk-desa" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Produk</a>
+                    <a href="index.html#edukasi" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Edukasi</a>
+                    <a href="index.html#stunting" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300">Stunting</a>
+                    <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-[#3C3C3C] hover:text-teal-500 hover:underline transition-colors duration-300 flex items-center">
+                        Berita Kaliprau <i data-lucide="arrow-up-right" class="h-4 w-4 ml-1"></i>
+                    </a>
+                </nav>
+                <!-- Tombol Menu Mobile -->
+                <button id="mobile-menu-button" class="lg:hidden text-[#3C3C3C]" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="h-7 w-7"></i>
+                </button>
+            </div>
+            <!-- Menu Mobile Dropdown -->
+            <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-gray-200/50">
+                <nav class="flex flex-col space-y-1">
+                    <a href="index.html#profil-desa" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Profil Desa</a>
+                    
+                    <!-- Mobile Pemerintahan Dropdown -->
+                    <div>
+                        <button class="mobile-dropdown-toggle w-full flex justify-between items-center text-gray-800 p-2 rounded-md hover:bg-teal-200">
+                            <span>Pemerintahan</span>
+                            <i data-lucide="chevron-down" class="h-5 w-5 transition-transform duration-200"></i>
+                        </button>
+                        <div class="pl-4 flex-col hidden">
+                            <a href="sotk.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Struktur Organisasi</a>
+                            <a href="keuangan_desa.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Keuangan Desa</a>
+                            <a href="data_aset.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Data Aset Desa</a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Potensi Dropdown -->
+                    <div>
+                        <button class="mobile-dropdown-toggle w-full flex justify-between items-center text-gray-800 p-2 rounded-md hover:bg-teal-200">
+                            <span>Potensi</span>
+                            <i data-lucide="chevron-down" class="h-5 w-5 transition-transform duration-200"></i>
+                        </button>
+                        <div class="pl-4 flex-col hidden">
+                            <a href="potensiSDA.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Alam dan Kehidupan Kaliprau</a>
+                            <a href="potensiBudaya.html" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md block">Jejak Budaya</a>
+                        </div>
+                    </div>
+
+                    <a href="index.html#produk-desa" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Produk</a>
+                    <a href="index.html#edukasi" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Edukasi</a>
+                    <a href="index.html#stunting" class="mobile-link text-gray-700 hover:bg-teal-200 p-2 rounded-md">Stunting</a>
+                    <a href="https://bumikaliprau.blogspot.com/" target="_blank" rel="noopener noreferrer" class="mobile-link flex items-center gap-x-1 text-gray-700 hover:bg-teal-200 p-2 rounded-md">
+                        Berita Kaliprau
+                        <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+  <main class="container mx-auto px-4 py-10 mt-20">
+    <a href="index.html#produk-desa" class="group inline-flex items-center gap-2 text-black hover:text-teal-500 hover:underline transition-colors duration-300">
+        <i data-lucide="arrow-left" class="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1"></i>
+        <span>Kembali</span>
+    </a>
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-2">
+      <!-- Kolom Kiri: Galeri + Varian di bawah gambar -->
+      <section aria-labelledby="galeri-produk" class="space-y-5">
+        <h2 id="galeri-produk" class="sr-only">Galeri Produk</h2>
+        
+        <!-- Galeri -->
+        <div class="swiper product-swiper rounded-2xl shadow-lg ring-1 ring-black/5 overflow-hidden">
+          <div class="swiper-wrapper">
+            <!-- 7 slide = 7 varian. Ganti src dengan foto asli per varian -->
+            
+            <div class="swiper-slide"><img src="images/sabun/ALOE VERA, CITRUS, SERAI.png" alt="mix-3" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/CHARCOAL.png" alt="charcoal" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/COKELAT.png" alt="cokelat" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/JASMINE.png" alt="jasmine" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/KAYU MANIS.png" alt="kayu-manis" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/KOPI.png" alt="kopi" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/PANDAN.png" alt="pandan" class="w-full h-full object-cover" loading="lazy"></div>
+       
+            <div class="swiper-slide"><img src="images/sabun/SLIDE 1.png" alt="mix-3" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/SLIDE 2.jpg" alt="charcoal" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/SLIDE 3.jpg" alt="cokelat" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/SLIDE 4.jpg" alt="jasmine" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/SLIDE 5.jpg" alt="kayu-manis" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/SLIDE 6.jpg" alt="kopi" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/SLIDE 7.jpg" alt="pandan" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/sabun/SLIDE 8.jpg" alt="All-varian" class="w-full h-full object-cover" loading="lazy"></div>
+          </div>
+          <div class="swiper-button-next" aria-label="Gambar selanjutnya"></div>
+          <div class="swiper-button-prev" aria-label="Gambar sebelumnya"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- Varian di bawah gambar (sinkron dengan galeri) -->
+        <div id="varian" class="space-y-2">
+          <h3 class="text-sm font-semibold text-gray-700">Pilih Varian Aroma</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="variantList">
+            <!-- Button varian di-generate lewat JS agar rapi dan mudah diubah -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Kolom Kanan: Detail Produk -->
+      <section aria-labelledby="detail-produk" class="space-y-6">
+        <header>
+          <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-teal-700 md:mt-4">Melauré</h1>
+          <p class="text-base md:text-lg text-gray-600 mt-1">Lilin Aromaterapi Ramah Lingkungan</p>
+        </header>
+
+        <div class="flex items-end gap-3">
+          <p class="text-3xl md:text-4xl font-bold">Rp30.000</p>
+          <span class="text-sm text-gray-500">/ buah</span>
+        </div>
+
+        <div id="deskripsi" class="prose prose-sm md:prose-base max-w-none">
+          <h2 class="text-lg font-semibold not-prose">Deskripsi Produk</h2>
+          <p class="mt-2 text-justify">Melauré terinspirasi dari dua hal penuh makna. Melati, bunga yang melambangkan kesucian dan kelembutan khas Indonesia dan Lauré, berasal dari kata laurel yang berarti simbol kejayaan dan kehormatan. Dua makna ini berpadu dalam Melauré. Sabun alami yang membersihkan tubuh, menenangkan jiwa, dan merawat bumi.</p> 
+          <p class="mt-4 text-justify font-bold">Varian Sabun</p>
+          <ul class="list-disc list-inside mt-2 space-y-2">
+              <li><strong>Sabun Melati</strong> – Aroma lembut bunga melati yang menenangkan dan memberi kesegaran alami.</li>
+              <li><strong>Aloe Vera, Citrus, Serai</strong> – Melembabkan kulit dengan sensasi segar dan menenangkan.</li>
+              <li><strong>Charcoal</strong> – Membersihkan pori-pori secara mendalam dengan memanfaatkan arang.</li>
+              <li><strong>Pandan</strong> – Aroma manis dan lembut khas daun pandan.</li>
+              <li><strong>Cokelat</strong> – Keharuman manis coklat yang hangat dan memanjakan.</li>
+              <li><strong>Kayu Manis</strong> – Wangi hangat rempah yang menenangkan.</li>
+              <li><strong>Kopi</strong> – Aroma kopi segar yang membangkitkan energi dan menyegarkan kulit.</li>
+          </ul>
+        </div>
+
+        <!-- <div id="aksi" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <a href="https://drive.google.com/file/d/1Xa8AfntIPO504Hfo28cN74YWBmVC8RCF/view?usp=sharing" class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-md transition">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="book-open" class="h-8 w-8 text-gray-700"></i>
+              <span class="mt-2 text-sm font-semibold">Modul Marketing</span>
+              <span class="text-xs text-gray-500">Penjualan dan Promosi</span>
+            </div>
+          </a>
+          <a href="https://heyzine.com/flip-book/2a2971f6d0.html" class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-md transition">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="book-open-text" class="h-8 w-8 text-gray-700"></i>
+              <span class="mt-2 text-sm font-semibold">Digital Flipbook</span>
+              <span class="text-xs text-gray-500">Kisah Dibalik Kaliprau</span>
+            </div>
+          </a> -->
+          <!-- <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="group p-4 rounded-2xl bg-[#65B741] text-white shadow hover:bg-opacity-90 transition">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="message-circle" class="h-8 w-8"></i>
+              <span class="mt-2 text-sm font-semibold">Hubungi Penjual</span>
+              <span class="text-xs opacity-90">Pesan via WhatsApp</span>
+            </div>
+          </a> -->
+          <!-- <a href="https://www.instagram.com/marlene.candle?utm_source=qr&igsh=OHlhbnVsdGJ2bGs0" target="_blank" rel="noopener" class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-md transition">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="instagram" class="h-8 w-8 text-gray-700"></i>
+              <span class="mt-2 text-sm font-semibold">Instagram</span>
+              <span class="text-xs text-gray-500">@marlene.candle</span>
+            </div>
+          </a>
+        </div> -->
+
+        <!-- <div class="rounded-2xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-900">
+          <p class="font-semibold">Catatan:</p>
+          <p>Bisa request label ucapan & kemasan hadiah. Tanyakan ke penjual sebelum checkout.</p>
+        </div> -->
+        <div id="aksi" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a href="https://drive.google.com/drive/folders/1vzQzRZB9NmMKx3bR0czuv5H2_G3sNHlV?usp=drive_link" 
+            class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-lg hover:ring-2 hover:ring-teal-500 transition-all duration-300">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="book-open" class="h-8 w-8 text-gray-700 group-hover:text-teal-600 transition-colors"></i>
+              <span class="mt-2 text-sm font-semibold group-hover:text-teal-600">Katalog Sabun</span>
+              <span class="text-xs text-gray-500">Digital Katalog Melaure</span>
+            </div>
+          </a>
+
+          <a href="https://www.instagram.com/melaure.official?igsh=MWs5c3B1aGFrMWQ2bw%3D%3D&utm_source=qr" target="_blank" rel="noopener" 
+            class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-lg hover:ring-2 hover:ring-teal-500 transition-all duration-300">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="instagram" class="h-8 w-8 text-gray-700 group-hover:text-teal-600 transition-colors"></i>
+              <span class="mt-2 text-sm font-semibold group-hover:text-teal-600">Instagram</span>
+              <span class="text-xs text-gray-500">@melaure.official</span>
+            </div>
+          </a>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- <footer class="mt-16 border-t">
+    <div class="container mx-auto px-4 py-10 text-sm text-gray-600">
+      <p>© <span id="year"></span> Desa Kaliprau. Dibuat dengan ♥ untuk UMKM lokal.</p>
+    </div>
+  </footer> -->
+  <footer id="kontak" class="bg-teal-800 text-white">
+  <div class="container mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      <div>
+        <h3 class="text-xl font-bold mb-4">Desa Kaliprau</h3>
+        <p class="text-gray-300">Jasmine Village<br>Kecamatan Ulujami, Kabupaten Pemalang<br>Jawa Tengah</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-4">Tautan Penting</h3>
+        <ul class="space-y-2">
+          <li><a href="#profil" class="text-gray-300 hover:text-white">Profil Desa</a></li>
+          <li><a href="#pemerintahan" class="text-gray-300 hover:text-white">Pemerintahan</a></li>
+          <li><a href="#potensi-desa" class="text-gray-300 hover:text-white">Potensi</a></li>
+          <li><a href="#produk-desa" class="text-gray-300 hover:text-white">Produk</a></li>
+          <li><a href="#edukasi" class="text-gray-300 hover:text-white">Edukasi</a></li>
+          <li><a href="#stunting" class="text-gray-300 hover:text-white">Stunting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-4">Ikuti Kami</h3>
+        <div class="flex justify-center md:justify-start space-x-4">
+          <a href="https://www.facebook.com/desakaliprau/?locale=id_ID" target="_blank" class="text-gray-300 hover:text-white"><i data-lucide="facebook" class="h-6 w-6"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 border-t border-teal-700 pt-8 text-center text-gray-400">
+      <p>© <span id="year"></span> Desa Kaliprau — Dibuat oleh Tim KKN-T 160 Universitas Diponegoro 2025</p>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    // Tahun dinamis & ikon
+    document.getElementById('year').textContent = new Date().getFullYear();
+    lucide.createIcons();
+
+    // Data varian (7 varian)
+    const variants = [
+      { name: 'Aloe Vera, CItrus, Serai',     img: 'images/sabun/ALOE VERA, CITRUS, SERAI.png' },
+      { name: 'Charcoal',     img: 'images/sabun/Charcoal.png' },
+      { name: 'Cokelat',           img: 'images/sabun/cokelat.png' },
+      { name: 'Jasmine',  img: 'images/sabun/jasmine.png' },
+      { name: 'Kayu Manis',       img: 'images/sabun/Kayu Manis.png' },
+      { name: 'Kopi',       img: 'images/sabun/kopi.png' },
+    ];
+
+    // Render tombol varian di bawah gambar
+    const variantList = document.getElementById('variantList');
+    variantList.innerHTML = ''; // bersihkan dulu
+
+    variants.forEach((v, idx) => {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = [
+    'variant-btn w-full px-3 py-2 rounded-xl border bg-white shadow-sm text-left',
+    'hover:bg-teal-50 transition text-sm',
+    // highlight saat terpilih (Tailwind mendukung aria-*)
+    'aria-selected:ring-2 aria-selected:ring-teal-600 aria-selected:bg-teal-50'
+  ].join(' ');
+  btn.setAttribute('data-index', idx);
+  btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+  btn.innerHTML = `
+    <div class="flex items-center gap-3">
+      <img src="${v.img}" alt="${v.name}" loading="lazy"
+           onerror="this.src='https://placehold.co/80x80/eeeeee/666?text=No+Img'"
+           class="variant-thumb" />
+      <span class="font-medium">${v.name}</span>
+    </div>
+  `;
+  variantList.appendChild(btn);
+});
+
+    // Inisialisasi Swiper (pakai loop true agar autoplay halus), pakai slideToLoop saat memilih varian
+    const productSwiper = new Swiper('.product-swiper', {
+      loop: true,
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+      keyboard: { enabled: true },
+      on: {
+      slideChange(sw) {
+        const real = sw.realIndex; // 0..n
+        document.querySelectorAll('.variant-btn').forEach((b, i) =>
+          b.setAttribute('aria-selected', i === real ? 'true' : 'false')
+        );
+      }
+    }
+  });
+
+    // Klik varian => pindah slide ke varian tersebut
+    variantList.addEventListener('click', (e) => {
+      const btn = e.target.closest('.variant-btn');
+      if (!btn) return;
+      const idx = Number(btn.getAttribute('data-index'));
+      productSwiper.slideToLoop(idx, 500); // 500ms animasi
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // === MOBILE MENU FUNCTIONALITY ===
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+        
+        if (mobileMenuButton && mobileMenu) {
+            const toggleMenu = () => {
+                mobileMenu.classList.toggle('hidden');
+            };
+
+            mobileMenuButton.addEventListener('click', toggleMenu);
+            
+            // Close menu when clicking mobile links
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                        }, 150); // A short delay can improve user experience 
+                    }
+                });
+            });
+            mobileDropdownToggles.forEach(button => {
+                button.addEventListener('click', () => {
+                    const dropdownContent = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    dropdownContent.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+        }
+   });// END DOMContentLoaded // === GLOBAL MODAL FUNCTIONS ===
+    (function(){
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
