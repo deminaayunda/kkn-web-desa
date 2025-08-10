@@ -83,6 +83,7 @@
         .gradient-blue-dark {
             background: linear-gradient(90deg, #4682B4, #3A6690); /* Dari biru ke biru sedikit lebih gelap */
         }
+        .variant-thumb { width: 40px; height: 40px; object-fit: cover; border-radius: 10px; }
     </style>
 </head>
 <body class="bg-[#FDFDFD] text-[#1f2937]">
@@ -177,7 +178,7 @@
     </header>
 
   <main class="container mx-auto px-4 py-10 mt-20">
-    <a href="index.html#pemerintahan" class="group inline-flex items-center gap-2 text-black hover:text-teal-500 hover:underline transition-colors duration-300">
+    <a href="index.html#produk" class="group inline-flex items-center gap-2 text-black hover:text-teal-500 hover:underline transition-colors duration-300">
         <i data-lucide="arrow-left" class="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1"></i>
         <span>Kembali</span>
     </a>
@@ -190,13 +191,15 @@
         <div class="swiper product-swiper rounded-2xl shadow-lg ring-1 ring-black/5 overflow-hidden">
           <div class="swiper-wrapper">
             <!-- 7 slide = 7 varian. Ganti src dengan foto asli per varian -->
-            <div class="swiper-slide"><img src="https://placehold.co/900x900/f1c40f/ffffff?text=Melati+Klasik" alt="Marlene Candle - Melati Klasik" class="w-full h-full object-cover" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://placehold.co/900x900/16a34a/ffffff?text=Melati+%26+Teh+Hijau" alt="Marlene Candle - Melati & Teh Hijau" class="w-full h-full object-cover" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://placehold.co/900x900/7e22ce/ffffff?text=Melati+%26+Lavender" alt="Marlene Candle - Melati & Lavender" class="w-full h-full object-cover" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://placehold.co/900x900/f59e0b/ffffff?text=Melati+%26+Vanila" alt="Marlene Candle - Melati & Vanila" class="w-full h-full object-cover" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://placehold.co/900x900/f97316/ffffff?text=Melati+%26+Citrus" alt="Marlene Candle - Melati & Citrus" class="w-full h-full object-cover" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://placehold.co/900x900/78350f/ffffff?text=Melati+%26+Sandalwood" alt="Marlene Candle - Melati & Sandalwood" class="w-full h-full object-cover" loading="lazy"></div>
-            <div class="swiper-slide"><img src="https://placehold.co/900x900/0369a1/ffffff?text=Melati+%26+Ocean+Breeze" alt="Marlene Candle - Melati & Ocean Breeze" class="w-full h-full object-cover" loading="lazy"></div>
+            
+            <div class="swiper-slide"><img src="images/lilin/Floral Amber.jpg" alt="Marlene Candle - Floral Amber" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/lilin/Flower Petal.jpg" alt="Marlene Candle - Flower Petal" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/lilin/Melati.jpg" alt="Marlene Candle - Melati" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/lilin/Serene Lavender.jpg" alt="Marlene Candle - Serene Lavender" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/lilin/Spring Air.jpg" alt="Marlene Candle - Spring Air" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/lilin/Sweet Muse.jpg" alt="Marlene Candle - Sweet Muse" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/lilin/Packaging.png" alt="Marlene Candle - Packaging" class="w-full h-full object-cover" loading="lazy"></div>
+            <div class="swiper-slide"><img src="images/lilin/all varian.png" alt="All-varian" class="w-full h-full object-cover" loading="lazy"></div>
           </div>
           <div class="swiper-button-next" aria-label="Gambar selanjutnya"></div>
           <div class="swiper-button-prev" aria-label="Gambar sebelumnya"></div>
@@ -216,25 +219,34 @@
       <section aria-labelledby="detail-produk" class="space-y-6">
         <header>
           <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-teal-700 md:mt-4">Marlene Candle</h1>
-          <p class="text-base md:text-lg text-gray-600 mt-1">Lilin Aromaterapi dari Ekstrak Melati Asli</p>
+          <p class="text-base md:text-lg text-gray-600 mt-1">Lilin Aromaterapi Ramah Lingkungan</p>
         </header>
 
         <div class="flex items-end gap-3">
-          <p class="text-3xl md:text-4xl font-bold">Rp 25.000</p>
+          <p class="text-3xl md:text-4xl font-bold">Rp30.000</p>
           <span class="text-sm text-gray-500">/ buah</span>
         </div>
 
         <div id="deskripsi" class="prose prose-sm md:prose-base max-w-none">
           <h2 class="text-lg font-semibold not-prose">Deskripsi Produk</h2>
-          <p>Marlene Candle adalah lilin aromaterapi handmade dari pengrajin Desa Kaliprau. Menggunakan ekstrak melati asli dari kebun lokal, memberikan aroma menenangkan dan mewah. Cocok untuk relaksasi, dekorasi ruangan, atau hadiah. Dibuat dari bahan ramah lingkungan dengan pembakaran bersih.</p>
-          <ul>
-            <li>Soy wax & sumbu katun</li>
-            <li>Aroma lembut, tidak menyengat</li>
-            <li>Kemasan aman untuk pengiriman</li>
+          <p class="mt-2 text-justify">Hadirkan ketenangan dan aroma ke dalam ruangan Anda dengan cara yang lebih bermakna. Lilin Aromaterapi MARLENE adalah sebuah inovasi yang tidak hanya memberikan keharuman, tetapi juga mendukung keberlanjutan lingkungan.</p>
+          <p class="mt-4 text-justify">Kami bangga mempersembahkan lilin ini sebagai wujud apresiasi terhadap potensi lokal. Dibuat dari minyak jelantah olahan, setiap lilin merupakan pilihan bijak yang membantu mengurangi limbah. Aroma utamanya berasal dari melati khas Desa Kaliprau, sebuah desa yang dikenal dengan kebun melatinya yang subur. Setiap nyala lilin ini menyebarkan keharuman melati yang menenangkan, dipadukan dengan varian-varian pilihan yang siap mengubah suasana hati Anda.</p>
+          <p class="mt-4 text-justify">Nikmati relaksasinya. Pilih keharuman favorit Anda dan biarkan lilin kami menjadi simbol keindahan sekaligus kepedulian terhadap bumi dan kekayaan lokal.</p>
+          <ul class="list-disc list-inside mt-2 space-y-2">
+              <li><strong>Lilin Melati</strong> – Aroma melati murni yang menenangkan jiwa, cocok untuk meditasi dan mencari ketenangan.</li>
+              <li><strong>Flower Petal</strong> – Aroma melati segar berpadu dengan keharuman kelopak bunga kering, menciptakan suasana ceria dan penuh sukacita.</li>
+              <li><strong>Serene Lavender</strong> – Perpaduan melati dan lavender yang menenangkan, ideal untuk membantu Anda tidur nyenyak.</li>
+              <li><strong>Spring Air</strong> – Kesegaran melati berpadu udara musim semi, memberikan energi baru dan semangat positif.</li>
+              <li><strong>Sweet Muse</strong> – Aroma melati dengan sentuhan manis yang misterius, menghadirkan kesan mewah dan anggun.</li>
+              <li><strong>Floral Amber</strong> – Melati lembut dengan aroma floral amber yang hangat, sempurna untuk suasana romantis dan damai.</li>
           </ul>
+          
+          <p class="mt-4 text-justify">Setiap lilin MARLENE adalah sepotong seni, persembahan dari alam yang diolah kembali. Jadikan ruang Anda panggung dari cerita wangi yang tak terlupakan.</p>
+          
+          
         </div>
 
-        <div id="aksi" class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <!-- <div id="aksi" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <a href="https://drive.google.com/file/d/1Xa8AfntIPO504Hfo28cN74YWBmVC8RCF/view?usp=sharing" class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-md transition">
             <div class="flex flex-col items-center text-center">
               <i data-lucide="book-open" class="h-8 w-8 text-gray-700"></i>
@@ -248,27 +260,56 @@
               <span class="mt-2 text-sm font-semibold">Digital Flipbook</span>
               <span class="text-xs text-gray-500">Kisah Dibalik Kaliprau</span>
             </div>
-          </a>
-          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="group p-4 rounded-2xl bg-[#65B741] text-white shadow hover:bg-opacity-90 transition">
+          </a> -->
+          <!-- <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="group p-4 rounded-2xl bg-[#65B741] text-white shadow hover:bg-opacity-90 transition">
             <div class="flex flex-col items-center text-center">
               <i data-lucide="message-circle" class="h-8 w-8"></i>
               <span class="mt-2 text-sm font-semibold">Hubungi Penjual</span>
               <span class="text-xs opacity-90">Pesan via WhatsApp</span>
             </div>
-          </a>
-          <a href="#" target="_blank" rel="noopener" class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-md transition">
+          </a> -->
+          <!-- <a href="https://www.instagram.com/marlene.candle?utm_source=qr&igsh=OHlhbnVsdGJ2bGs0" target="_blank" rel="noopener" class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-md transition">
             <div class="flex flex-col items-center text-center">
               <i data-lucide="instagram" class="h-8 w-8 text-gray-700"></i>
-              <span class="mt-2 text-sm font-semibold">Sosial Media</span>
-              <span class="text-xs text-gray-500">@marlenecandle</span>
+              <span class="mt-2 text-sm font-semibold">Instagram</span>
+              <span class="text-xs text-gray-500">@marlene.candle</span>
+            </div>
+          </a>
+        </div> -->
+
+        <!-- <div class="rounded-2xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-900">
+          <p class="font-semibold">Catatan:</p>
+          <p>Bisa request label ucapan & kemasan hadiah. Tanyakan ke penjual sebelum checkout.</p>
+        </div> -->
+        <div id="aksi" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <a href="https://drive.google.com/file/d/1Xa8AfntIPO504Hfo28cN74YWBmVC8RCF/view?usp=sharing" 
+            class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-lg hover:ring-2 hover:ring-teal-500 transition-all duration-300">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="book-open" class="h-8 w-8 text-gray-700 group-hover:text-teal-600 transition-colors"></i>
+              <span class="mt-2 text-sm font-semibold group-hover:text-teal-600">Modul Marketing</span>
+              <span class="text-xs text-gray-500">Penjualan dan Promosi</span>
+            </div>
+          </a>
+
+          <a href="https://heyzine.com/flip-book/2a2971f6d0.html" 
+            class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-lg hover:ring-2 hover:ring-teal-500 transition-all duration-300">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="book-open-text" class="h-8 w-8 text-gray-700 group-hover:text-teal-600 transition-colors"></i>
+              <span class="mt-2 text-sm font-semibold group-hover:text-teal-600">Digital Flipbook</span>
+              <span class="text-xs text-gray-500">Kisah Dibalik Kaliprau</span>
+            </div>
+          </a>
+
+          <a href="https://www.instagram.com/marlene.candle?utm_source=qr&igsh=OHlhbnVsdGJ2bGs0" target="_blank" rel="noopener" 
+            class="group p-4 rounded-2xl bg-white shadow ring-1 ring-black/5 hover:shadow-lg hover:ring-2 hover:ring-teal-500 transition-all duration-300">
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="instagram" class="h-8 w-8 text-gray-700 group-hover:text-teal-600 transition-colors"></i>
+              <span class="mt-2 text-sm font-semibold group-hover:text-teal-600">Instagram</span>
+              <span class="text-xs text-gray-500">@marlene.candle</span>
             </div>
           </a>
         </div>
 
-        <div class="rounded-2xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-900">
-          <p class="font-semibold">Catatan:</p>
-          <p>Bisa request label ucapan & kemasan hadiah. Tanyakan ke penjual sebelum checkout.</p>
-        </div>
       </section>
     </div>
   </main>
@@ -316,26 +357,39 @@
 
     // Data varian (7 varian)
     const variants = [
-      { name: 'Melati' },
-      { name: 'Teh Hijau' },
-      { name: 'Lavender' },
-      { name: 'Vanila' },
-      { name: 'Citrus' },
-      { name: 'Sandalwood' },
-      { name: 'Ocean Breeze' },
+      { name: 'Floral Amber',     img: 'images/lilin/Floral Amber.jpg' },
+      { name: 'Flower Petal',     img: 'images/lilin/Flower Petal.jpg' },
+      { name: 'Melati',           img: 'images/lilin/Melati.jpg' },
+      { name: 'Serene Lavender',  img: 'images/lilin/Serene Lavender.jpg' },
+      { name: 'Spring Air',       img: 'images/lilin/Spring Air.jpg' },
+      { name: 'Sweet Muse',       img: 'images/lilin/Sweet Muse.jpg' },
     ];
 
     // Render tombol varian di bawah gambar
     const variantList = document.getElementById('variantList');
+    variantList.innerHTML = ''; // bersihkan dulu
+
     variants.forEach((v, idx) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'variant-btn w-full text-center px-3 py-2 rounded-xl border bg-white shadow-sm hover:bg-teal-200 transition text-sm focus:outline-none';
-      btn.setAttribute('data-index', idx);
-      btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
-      btn.innerHTML = `<span class="font-medium">${v.name}</span>`;
-      variantList.appendChild(btn);
-    });
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = [
+    'variant-btn w-full px-3 py-2 rounded-xl border bg-white shadow-sm text-left',
+    'hover:bg-teal-50 transition text-sm',
+    // highlight saat terpilih (Tailwind mendukung aria-*)
+    'aria-selected:ring-2 aria-selected:ring-teal-600 aria-selected:bg-teal-50'
+  ].join(' ');
+  btn.setAttribute('data-index', idx);
+  btn.setAttribute('aria-selected', idx === 0 ? 'true' : 'false');
+  btn.innerHTML = `
+    <div class="flex items-center gap-3">
+      <img src="${v.img}" alt="${v.name}" loading="lazy"
+           onerror="this.src='https://placehold.co/80x80/eeeeee/666?text=No+Img'"
+           class="variant-thumb" />
+      <span class="font-medium">${v.name}</span>
+    </div>
+  `;
+  variantList.appendChild(btn);
+});
 
     // Inisialisasi Swiper (pakai loop true agar autoplay halus), pakai slideToLoop saat memilih varian
     const productSwiper = new Swiper('.product-swiper', {
@@ -345,13 +399,14 @@
       navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
       keyboard: { enabled: true },
       on: {
-        slideChange(sw) {
-          // sinkronkan state active pada tombol varian
-          const real = sw.realIndex; // index varian 0..6
-          document.querySelectorAll('.variant-btn').forEach((b, i) => b.setAttribute('aria-selected', i === real ? 'true' : 'false'));
-        }
+      slideChange(sw) {
+        const real = sw.realIndex; // 0..n
+        document.querySelectorAll('.variant-btn').forEach((b, i) =>
+          b.setAttribute('aria-selected', i === real ? 'true' : 'false')
+        );
       }
-    });
+    }
+  });
 
     // Klik varian => pindah slide ke varian tersebut
     variantList.addEventListener('click', (e) => {
@@ -360,6 +415,7 @@
       const idx = Number(btn.getAttribute('data-index'));
       productSwiper.slideToLoop(idx, 500); // 500ms animasi
     });
+    
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize Lucide Icons
         lucide.createIcons();
